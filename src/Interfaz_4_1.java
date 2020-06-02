@@ -102,6 +102,11 @@ public class Interfaz_4_1 extends JFrame {
 		btnFiltrar.setBounds(546, 126, 100, 30);
 		panel.add(btnFiltrar);
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				getSeleccion();
+			}
+		});
 
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(656, 40, 588, 185);
@@ -122,26 +127,14 @@ public class Interfaz_4_1 extends JFrame {
 		panel.add(scrollPane_2);
 
 		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, },
-				new String[] { "Exp. ", "DNI ", "Nom. Alum. ", "Apell. Alum.", "CIF Emp.", "Nom. Emp.",
-						"Resp. Emp." }));
+		table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane_2.setViewportView(table_1);
+		addWindowListener(new WindowAdapter() {
+			public void windowActivated(WindowEvent e) {
+				String ssql = miModelo.getListadoPracticas();
+				table_1.setModel(miModelo.getTabla(ssql));
+			}
+		});
 
 		btnGuardarTodo = new JButton("Guardar ");
 		btnGuardarTodo.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -154,10 +147,6 @@ public class Interfaz_4_1 extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 37));
 		lblNewLabel.setForeground(new Color(153, 0, 51));
-		btnFiltrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
@@ -180,5 +169,19 @@ public class Interfaz_4_1 extends JFrame {
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+	}
+
+	private void getSeleccion() {
+		int filaAumnos = table.getSelectedRow();
+		int filaEmpresa = table_2.getSelectedRow();
+		String exp = (String) table.getValueAt(filaAumnos, 0);
+		String dni = (String) table.getValueAt(filaAumnos, 3);
+		String nombreAl = (String) table.getValueAt(filaAumnos, 1);
+		String apellido = (String) table.getValueAt(filaAumnos, 2);
+		String cif = (String) table_2.getValueAt(filaEmpresa, 0);
+		String nombreEm = (String) table_2.getValueAt(filaEmpresa, 1);
+		String responsable = (String) table_2.getValueAt(filaEmpresa, 4);
+		miModelo.datosPracticas(exp, dni, nombreAl, apellido, cif, nombreEm, responsable);
+
 	}
 }
