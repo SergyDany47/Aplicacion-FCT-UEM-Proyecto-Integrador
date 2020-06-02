@@ -85,15 +85,20 @@ ALTER TABLE pertenece ADD CONSTRAINT pertenece_pk PRIMARY KEY ( grupo_cod_grupo,
 CREATE TABLE practica (
     empresa_cif      VARCHAR2(15 BYTE) NOT NULL,
     alumno_num_exp   NUMBER(15) NOT NULL,
-    anexo_2_1        DATE NOT NULL,
-    anexo_3          DATE NOT NULL,
-    anexo_7          DATE NOT NULL,
-    anexo_8          DATE NOT NULL,
-    fecha_ini        DATE NOT NULL,
-    fecha_fin        DATE NOT NULL,
+    DNI_ALUMNO	     VARCHAR2(10 CHAR)NOT NULL,
+    NOMBRE_AL	     VARCHAR2(50 CHAR)NOT NULL,
+    APELLIDO_AL	     VARCHAR2(50 CHAR)NOT NULL,	
+    NOMBRE_EMP	     VARCHAR2(50 CHAR)NOT NULL,	
+    RESPONSABLE_EMP  VARCHAR2(50 CHAR)NOT NULL,
+    anexo_2_1        DATE,
+    anexo_3          DATE,
+    anexo_7          DATE,
+    anexo_8          DATE,
+    fecha_ini        DATE,
+    fecha_fin        DATE,
     email_t          VARCHAR2(50 CHAR),
-    horario          VARCHAR2(50 CHAR) NOT NULL,
-    tutore           VARCHAR2(50 CHAR) NOT NULL,
+    horario          VARCHAR2(50 CHAR),
+    tutore           VARCHAR2(50 CHAR),
     anio_academico   VARCHAR2(50 CHAR)
 );
 
@@ -214,11 +219,11 @@ INSERT INTO gestiona(tutor_dni_tutor, grupo_cod_grupo, fecha, anexo_2_2, anio_ac
 INSERT INTO gestiona(tutor_dni_tutor, grupo_cod_grupo, fecha, anexo_2_2, anio_academico) VALUES('559863d',4, '9/8/17', '7/12/15', '2019/2020');
 INSERT INTO gestiona(tutor_dni_tutor, grupo_cod_grupo, fecha, anexo_2_2, anio_academico) VALUES('152263l',5, '9/8/17', '7/12/15', '2019/2020');
 
-INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('dfkj3156', 1523547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tutor@gmail.com','de 9 a 5', 'Dolores Fuertes de Barriga', '2019/2020');
+/*INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('dfkj3156', 1523547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tutor@gmail.com','de 9 a 5', 'Dolores Fuertes de Barriga', '2019/2020');
 INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('hykj3156', 1623547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tutor1@gmail.com','de 8 a 5', 'Dolores Fuertes de Pierna', '2019/2020');
 INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore,anio_academico) VALUES('sdkj3156', 1723547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tuto2@gmail.com','de 6 a 5', 'Dolores Fuertes de Cabeza', '2019/2020');
 INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('grkj3156', 1583547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tuto3@gmail.com','de 5 a 5', 'Dolores Fuertes de Rodilla', '2019/2020');
-INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('twkj3156', 1593547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tutor4@gmail.com','de 4 a 5', 'Dolores Fuertes de Culo', '2019/2020');
+INSERT INTO practica(empresa_cif, alumno_num_exp, anexo_2_1, anexo_3,anexo_7, anexo_8, fecha_ini, fecha_fin, email_t, horario,tutore, anio_academico) VALUES('twkj3156', 1593547, '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', '7/11/15', 'tutor4@gmail.com','de 4 a 5', 'Dolores Fuertes de Culo', '2019/2020');*/
 
 INSERT INTO pertenece(grupo_cod_grupo, alumno_num_exp, Anio_academico) VALUES(3,1523547, '2019/2020');
 INSERT INTO pertenece(grupo_cod_grupo, alumno_num_exp, Anio_academico) VALUES(2,1623547, '2019/2020');
