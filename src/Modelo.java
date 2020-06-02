@@ -40,12 +40,13 @@ public class Modelo {
 	private DefaultTableModel table;
 	private String listadoAlumno = "SELECT num_exp \"EXPEDIENTE\",nombre,apellidos,dni,"
 			+ "trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"EDAD\""
-			+ ",nacionalidad FROM sebas.alumno";
-	private String sqlListadoTutor = "SELECT dni_tutor \"DNI\", nombre, apellidos, centro_cod_centro \"C�DIGO CENTRO\"  FROM sebas.tutor";
-	private String listadoEmpresa = "SELECT cif, nombre, direccion \"DIRECCI�N\", telefono \"TEL�FONO\", resp_e \"RESPONSABLE\", localidad FROM sebas.empresa";
-	private String listadoPracticas = "SELECT a.dni \"DNI\", a.nombre \"NOMBRE ALUMNO\", a.apellidos \"APELLIDOS ALUMNO\", e.cif \"CIF EMPRESA\", e.nombre \"NOMBRE EMPRESA\", e.resp_e \"RESPONSABLE EMPRESA\" \r\n"
-			+ "FROM sebas.alumno a, sebas.empresa e, sebas.practica p\r\n"
-			+ "WHERE a.num_exp=p.alumno_num_exp AND p.empresa_cif=e.cif";
+			+ ",nacionalidad FROM ELFREDERIC.alumno";
+	private String sqlListadoTutor = "SELECT dni_tutor \"DNI\", nombre, apellidos, centro_cod_centro \"C�DIGO CENTRO\"  FROM ELFREDERIC.tutor";
+	private String listadoEmpresa = "SELECT cif, nombre, direccion \"DIRECCI�N\", telefono \"TEL�FONO\", resp_e \"RESPONSABLE\", localidad "
+			+ "FROM ELFREDERIC.empresa";
+	private String listadoPracticas = "SELECT alumno_num_exp \"EXPEDIENTE\", dni_alumno \"DNI\", nombre_al \"NOMBRE ALUMNO\", "
+			+ "apellido_al \"APELLIDOS ALUMNO\", empresa_cif \"CIF EMPRESA\", nombre_emp \"NOMBRE EMPRESA\","
+			+ " responsable_emp \"RESPONSABLE EMPRESA\" \r\n" + "FROM ELFREDERIC.practica";
 
 	private String user = "";
 	private String pas = "";
@@ -122,7 +123,7 @@ public class Modelo {
 
 	public void InicioSesion(String usr, String pwd) {
 
-		String ssql = "SELECT * FROM sebas.users WHERE usr=? AND pwd=?";
+		String ssql = "SELECT * FROM ELFREDERIC.users WHERE usr=? AND pwd=?";
 		if (conexion == null) {
 			ConexionBBDD();
 		}
@@ -151,7 +152,7 @@ public class Modelo {
 
 	public void consultaStatement(String usr) {
 
-		String ssql = "SELECT rol FROM sebas.users WHERE usr='" + usr + "'";
+		String ssql = "SELECT rol FROM ELFREDERIC.users WHERE usr='" + usr + "'";
 
 		try {
 			Statement stmt = conexion.createStatement();
@@ -321,7 +322,7 @@ public class Modelo {
 	}
 
 	public void insertarUsuario(String usuario, String password, String rol, String email) {
-		String query = "INSERT INTO sebas.users(usr, rol, pwd, email) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO ELFREDERIC.users(usr, rol, pwd, email) VALUES(?, ?, ?, ?)";
 		try {
 			if (conexion == null) {
 				ConexionBBDD();
@@ -340,7 +341,7 @@ public class Modelo {
 
 	public void insertarAlumnos(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad) {
-		String sql = "INSERT INTO sebas.alumno (dni,nombre,apellidos,num_exp,fec_naci,nacionalidad) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ELFREDERIC.alumno (dni,nombre,apellidos,num_exp,fec_naci,nacionalidad) VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -361,7 +362,7 @@ public class Modelo {
 	}
 
 	public void borrarAlumnos(String num_exp) {
-		String sql = "DELETE FROM sebas.alumno WHERE num_exp = ?";
+		String sql = "DELETE FROM ELFREDERIC.alumno WHERE num_exp = ?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, num_exp);
@@ -376,7 +377,7 @@ public class Modelo {
 
 	public void modificarAlumno(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad, String dniant) {
-		String sql = "UPDATE sebas.alumno SET num_exp=?,dni=?,nombre=?,apellidos=?,fec_naci=?,nacionalidad=? WHERE dni=? ";
+		String sql = "UPDATE ELFREDERIC.alumno SET num_exp=?,dni=?,nombre=?,apellidos=?,fec_naci=?,nacionalidad=? WHERE dni=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, num_exp);
@@ -399,7 +400,7 @@ public class Modelo {
 
 	public void insertarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion) {
-		String sql = "INSERT INTO sebas.empresa (cif,nombre,direccion,telefono,resp_e,localidad) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ELFREDERIC.empresa (cif,nombre,direccion,telefono,resp_e,localidad) VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -420,7 +421,7 @@ public class Modelo {
 	}
 
 	public void borrarEmpresa(String cif) {
-		String sql = "DELETE FROM sebas.empresa WHERE cif=?";
+		String sql = "DELETE FROM ELFREDERIC.empresa WHERE cif=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -435,7 +436,7 @@ public class Modelo {
 
 	public void modificarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion, String cifOld) {
-		String sql = "UPDATE sebas.empresa SET cif=?,nombre=?,direccion=?,telefono=?,resp_e=?,localidad=? WHERE cif=? ";
+		String sql = "UPDATE ELFREDERIC.empresa SET cif=?,nombre=?,direccion=?,telefono=?,resp_e=?,localidad=? WHERE cif=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -456,7 +457,7 @@ public class Modelo {
 	}
 
 	public void insertarTutor(String nombre, String apellido, String cod, String dni) {
-		String sql = "INSERT INTO sebas.tutor (dni_tutor,nombre,apellidos,centro_cod_centro) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO ELFREDERIC.tutor (dni_tutor,nombre,apellidos,centro_cod_centro) VALUES(?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -475,7 +476,7 @@ public class Modelo {
 	}
 
 	public void modificarTutor(String nombre, String apellido, String cod, String dni, String dniOld) {
-		String sql = "UPDATE sebas.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
+		String sql = "UPDATE ELFREDERIC.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -495,7 +496,7 @@ public class Modelo {
 	}
 
 	public void borrarTutor(String dni) {
-		String sql = "DELETE FROM sebas.tutor WHERE dni_tutor=?";
+		String sql = "DELETE FROM ELFREDERIC.tutor WHERE dni_tutor=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -509,7 +510,7 @@ public class Modelo {
 
 	public String[] updateAlumno(String dni) {
 		String[] datos = new String[2];
-		String updateAlumno = "Select dni, fec_naci from sebas.alumno where dni='" + dni + "'";
+		String updateAlumno = "Select dni, fec_naci from ELFREDERIC.alumno where dni='" + dni + "'";
 		try {
 			Statement stmt = conexion.createStatement();
 			ResultSet rs = stmt.executeQuery(updateAlumno);
@@ -531,5 +532,11 @@ public class Modelo {
 			resultado = false;
 		}
 		return resultado;
+	}
+
+	public void datosPracticas(String exp, String dni, String nombreAl, String apellido, String cif, String nombreEm,
+			String responsable) {
+		String sql = "";
+
 	}
 }
