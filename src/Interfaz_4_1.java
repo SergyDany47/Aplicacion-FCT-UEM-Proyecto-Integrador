@@ -6,6 +6,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -104,7 +106,22 @@ public class Interfaz_4_1 extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				getSeleccion();
+
+				int resp = JOptionPane.YES_NO_OPTION;
+				int option;
+				option = JOptionPane.showConfirmDialog(null, "Está seguro de guardar este producto?", "Guardar", resp);
+				if (option == 0) {
+					getSeleccion();
+					boolean insertado = miModelo.malInsertado();
+					if (insertado) {
+						JOptionPane.showMessageDialog(null, "La nueva fila ha sido insertada con éxito", "Advertencia",
+								JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "La nueva fila no ha sido insertada, datos ya existentes ",
+								"Advertencia", JOptionPane.INFORMATION_MESSAGE);
+
+					}
+				}
 			}
 		});
 
