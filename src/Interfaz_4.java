@@ -41,6 +41,7 @@ public class Interfaz_4 extends JFrame {
 	private JPanel panel;
 	private JButton btnNewButton;
 	private JButton btnGuardarFichero;
+	private JTextField txtExp;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -124,6 +125,8 @@ public class Interfaz_4 extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter4T";
+				miControlador.filtrarLisPra(getDatos(),inter);
 			}
 		});
 
@@ -131,7 +134,7 @@ public class Interfaz_4 extends JFrame {
 		txtNombre.setBounds(313, 46, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
-		txtNombre.setText("Apell. Num.");
+		txtNombre.setText("Apellidos");
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(Color.WHITE);
@@ -173,6 +176,15 @@ public class Interfaz_4 extends JFrame {
 		});
 		btnGuardarFichero.setBackground(SystemColor.info);
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
+		
+		txtExp = new JTextField();
+		txtExp.setToolTipText("");
+		txtExp.setText("Expediente");
+		txtExp.setForeground(Color.BLACK);
+		txtExp.setColumns(10);
+		txtExp.setBackground(Color.WHITE);
+		txtExp.setBounds(758, 46, 85, 20);
+		panel.add(txtExp);
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
@@ -217,5 +229,20 @@ public class Interfaz_4 extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(10, 11, 117, 30);
 		contentPane.add(btnNewButton);
+	}
+	public String [] getDatos(){
+		String [] datos = new String[7];
+		datos[0]=txtNumExpediente.getText(); //DNI
+		datos[1]=txtApellidos.getText(); //nomb
+		datos[2]=txtNombre.getText();//Apell
+		datos[3]=txtDNI.getText(); //CIF
+		datos[4]=txtEdad.getText(); //nom emp
+		datos[5]=txtExp.getText();
+		datos[6]=txtNacionalidad.getText(); //resp_esp
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
 	}
 }

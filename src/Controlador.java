@@ -357,4 +357,75 @@ public class Controlador {
 
 	}
 
+	public void filtrarLisAlum(String[] datos, String inter) {
+		String where="";
+		if(!datos[0].equals("") && !datos[0].equals("Num.Expediente"))
+			where+=" lower(num_exp) LIKE lower('"+datos[0]+"') || '%' AND";
+		if(!datos[3].equals("") && !datos[3].equals("DNI"))
+			where+=" lower(dni) LIKE lower('"+datos[3]+"') || '%' AND";
+		if(!datos[2].equals("") && !datos[2].equals("Nombre"))
+			where+=" lower(nombre) LIKE lower('"+datos[2]+"') || '%' AND";
+		if(!datos[1].equals("") && !datos[1].equals("Apellidos"))
+			where+=" lower(apellidos) LIKE lower('"+datos[1]+"') || '%' AND";
+		if(!datos[4].equals("") && !datos[4].equals("Fecha.Nacimiento"))
+			where+=" lower(fec_naci) LIKE lower('"+datos[4]+"') || '%' AND";
+		if(!datos[5].equals("") && !datos[5].equals("Nacionalidad"))
+			where+=" lower(nacionalidad) LIKE lower('"+datos[5]+"') || '%' AND";
+		
+		miModelo.filtrarLisAlum(where, inter);
+	}
+	
+	public void filtrarLisEmpr(String[] datos, String inter) {
+		String where="";
+		if(!datos[0].equals("") && !datos[0].equals("CIF"))
+			where+=" lower(cif) LIKE lower('"+datos[0]+"') || '%' AND";
+		if(!datos[3].equals("") && !datos[3].equals("Nombre"))
+			where+=" lower(nombre) LIKE lower('"+datos[3]+"') || '%' AND";
+		if(!datos[2].equals("") && !datos[2].equals("Teléfono"))
+			where+=" lower(telefono) LIKE lower('"+datos[2]+"') || '%' AND";
+		if(!datos[1].equals("") && !datos[1].equals("Direccion"))
+			where+=" lower(direccion) LIKE lower('"+datos[1]+"') || '%' AND";
+		if(!datos[4].equals("") && !datos[4].equals("Responsable"))
+			where+=" lower(resp_e) LIKE lower('"+datos[4]+"') || '%' AND";
+		if(!datos[5].equals("") && !datos[5].equals("Localidad"))
+			where+=" lower(localidad) LIKE lower('"+datos[5]+"') || '%' AND";
+		
+		miModelo.filtrarLisEmp(where, inter);
+	}
+	
+	public void filtrarLisPra(String[] datos, String inter) {
+		String where="";
+		if(!datos[0].equals("") && !datos[0].equals("DNI"))
+			where+=" lower(dni_alumno) LIKE lower('"+datos[0]+"') || '%' AND";
+		if(!datos[1].equals("") && !datos[1].equals("Nom. Alum."))
+			where+=" lower(nombre_al) LIKE lower('"+datos[1]+"') || '%' AND";
+		if(!datos[2].equals("") && !datos[2].equals("Apellidos"))
+			where+=" lower(apellido_al) LIKE lower('"+datos[2]+"') || '%' AND";
+		if(!datos[3].equals("") && !datos[3].equals("CIF Emp."))
+			where+=" lower(Empresa_cif) LIKE lower('"+datos[3]+"') || '%' AND";
+		if(!datos[4].equals("") && !datos[4].equals("Nom. Emp."))
+			where+=" lower(nombre_emp) LIKE lower('"+datos[4]+"') || '%' AND";
+		if(!datos[5].equals("") && !datos[5].equals("Expediente"))
+			where+=" lower(Alumno_num_exp) LIKE lower('"+datos[5]+"') || '%' AND";
+		if(!datos[6].equals("") && !datos[6].equals("Resp. Emp"))
+			where+=" lower(responsable_emp) LIKE lower('"+datos[6]+"') || '%' AND";
+		
+		miModelo.filtrarLisPra(where, inter);
+	}
+	
+	public void filtrarLisTut(String[] datos, String inter) {
+		String where="";
+		if(!datos[0].equals("") && !datos[0].equals("DNI del tutor"))
+			where+=" lower(dni_tutor) LIKE lower('"+datos[0]+"') || '%' AND";
+		if(!datos[1].equals("") && !datos[1].equals("Nombre"))
+			where+=" lower(nombre) LIKE lower('"+datos[1]+"') || '%' AND";
+		if(!datos[2].equals("") && !datos[2].equals("Apellidos"))
+			where+=" lower(apellidos) LIKE lower('"+datos[2]+"') || '%' AND";
+		if(!datos[3].equals("") && !datos[3].equals("Código centro"))
+			where+=" lower(centro_cod_centro) LIKE lower('"+datos[3]+"') || '%' AND";
+		
+		miModelo.filtrarLisTut(where, inter);
+	}
+
+
 }

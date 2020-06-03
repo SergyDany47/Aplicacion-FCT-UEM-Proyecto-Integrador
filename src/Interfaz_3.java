@@ -41,6 +41,7 @@ public class Interfaz_3 extends JFrame {
 	private JPanel panel_1;
 	private JButton btnCerrarSesion;
 	private JButton btnGuardarFichero;
+	private JTextField txtDireccion;
 	
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -123,6 +124,8 @@ public class Interfaz_3 extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter3T";
+				miControlador.filtrarLisEmpr(getDatos(),inter);
 			}
 		});
 
@@ -163,6 +166,15 @@ public class Interfaz_3 extends JFrame {
 		});
 		btnGuardarFichero.setBackground(SystemColor.info);
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
+		
+		txtDireccion = new JTextField();
+		txtDireccion.setToolTipText("");
+		txtDireccion.setText("Direccion");
+		txtDireccion.setForeground(Color.BLACK);
+		txtDireccion.setColumns(10);
+		txtDireccion.setBackground(Color.WHITE);
+		txtDireccion.setBounds(660, 40, 85, 20);
+		panel.add(txtDireccion);
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
@@ -207,5 +219,19 @@ public class Interfaz_3 extends JFrame {
 		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCerrarSesion.setBounds(10, 11, 117, 30);
 		contentPane.add(btnCerrarSesion);
+	}
+	public String [] getDatos(){
+		String [] datos = new String[6];
+		datos[0]=txtNumExpediente.getText(); //CIF
+		datos[3]=txtApellidos.getText(); //Nombre
+		datos[2]=txtNombre.getText();//Tel
+		datos[5]=txtDNI.getText(); //Localidad
+		datos[4]=txtEdad.getText(); //resp_e
+		datos[1]=txtDireccion.getText();
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
 	}
 }

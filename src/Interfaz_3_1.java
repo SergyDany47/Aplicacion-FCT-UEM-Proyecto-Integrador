@@ -56,6 +56,7 @@ public class Interfaz_3_1 extends JFrame {
 	private JButton btnGuardar;
 	private JButton btnModificar;
 	private JButton btnBorrar;
+	private JTextField txtDireccion1;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -174,6 +175,8 @@ public class Interfaz_3_1 extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter31T";
+				miControlador.filtrarLisEmpr(getDatos(),inter);
 			}
 		});
 
@@ -364,6 +367,15 @@ public class Interfaz_3_1 extends JFrame {
 		txtDireccion.setBounds(56, 116, 182, 20);
 		panel_1_1.add(txtDireccion);
 		txtDireccion.setColumns(10);
+		
+		txtDireccion1 = new JTextField();
+		txtDireccion1.setToolTipText("");
+		txtDireccion1.setText("Direccion");
+		txtDireccion1.setForeground(Color.BLACK);
+		txtDireccion1.setColumns(10);
+		txtDireccion1.setBackground(Color.WHITE);
+		txtDireccion1.setBounds(563, 59, 85, 20);
+		panel.add(txtDireccion1);
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
@@ -417,5 +429,20 @@ public class Interfaz_3_1 extends JFrame {
 		txtEdad.setText((String) table.getValueAt(fila, 4));
 		txtNombre.setText((String) table.getValueAt(fila, 3));
 		txtNumExpediente.setText((String) table.getValueAt(fila, 0));
+		txtDireccion1.setText((String) table.getValueAt(fila, 2));
+	}
+	public String [] getDatos(){
+		String [] datos = new String[6];
+		datos[0]=txtNumExpediente.getText(); //CIF
+		datos[3]=txtApellidos.getText(); //Nombre
+		datos[2]=txtNombre.getText();//Tel
+		datos[5]=txtDNI.getText(); //Localidad
+		datos[4]=txtEdad.getText(); //resp_e
+		datos[1]=txtDireccion1.getText();
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
 	}
 }
