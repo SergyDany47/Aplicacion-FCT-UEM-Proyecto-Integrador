@@ -40,6 +40,7 @@ public class Interfaz_4_Director extends JFrame {
 	private JPanel panel;
 	private JButton btnCerrarSesion;
 	private JButton btnGuardarFichero;
+	private JTextField txtExp;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -91,7 +92,7 @@ public class Interfaz_4_Director extends JFrame {
 		txtEdad.setBounds(533, 46, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Nom. Emp. ");
+		txtEdad.setText("Nom. Emp.");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
@@ -101,7 +102,7 @@ public class Interfaz_4_Director extends JFrame {
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
 		txtNumExpediente.setForeground(Color.BLACK);
-		txtNumExpediente.setText("DNI ");
+		txtNumExpediente.setText("DNI");
 		txtNumExpediente.setToolTipText("");
 		txtNumExpediente.setColumns(10);
 
@@ -112,6 +113,8 @@ public class Interfaz_4_Director extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter4D";
+				miControlador.filtrarLisPra(getDatos(),inter);
 			}
 		});
 		
@@ -130,7 +133,7 @@ public class Interfaz_4_Director extends JFrame {
 		txtNombre.setBounds(313, 46, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
-		txtNombre.setText("Apell. Num.");
+		txtNombre.setText("Apellidos");
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(Color.WHITE);
@@ -161,6 +164,15 @@ public class Interfaz_4_Director extends JFrame {
 		txtNacionalidad.setForeground(Color.BLACK);
 		txtNacionalidad.setColumns(10);
 		txtNacionalidad.setBackground(Color.WHITE);
+		
+		txtExp = new JTextField();
+		txtExp.setToolTipText("");
+		txtExp.setText("Expediente");
+		txtExp.setForeground(Color.BLACK);
+		txtExp.setColumns(10);
+		txtExp.setBackground(Color.WHITE);
+		txtExp.setBounds(758, 46, 85, 20);
+		panel.add(txtExp);
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
@@ -216,5 +228,20 @@ public class Interfaz_4_Director extends JFrame {
 		btnListadoTutores.setBackground(SystemColor.info);
 		btnListadoTutores.setBounds(694, 11, 180, 30);
 		btnListTutores.add(btnListadoTutores);
+	}
+	public String [] getDatos(){
+		String [] datos = new String[7];
+		datos[0]=txtNumExpediente.getText(); //DNI
+		datos[1]=txtApellidos.getText(); //nomb
+		datos[2]=txtNombre.getText();//Apell
+		datos[3]=txtDNI.getText(); //CIF
+		datos[4]=txtEdad.getText(); //nom emp
+		datos[5]=txtExp.getText();
+		datos[6]=txtNacionalidad.getText(); //resp_esp
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
 	}
 }

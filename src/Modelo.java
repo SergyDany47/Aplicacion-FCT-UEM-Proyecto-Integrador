@@ -562,7 +562,7 @@ public class Modelo {
 
 	public void filtrarLisAlum(String where, String inter) {
 		if(where=="")
-			JOptionPane.showMessageDialog(null, "Debe introduccir algun dato para filtrar","Adevertencia", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar","Adevertencia", JOptionPane.WARNING_MESSAGE);
 		else {
 			//Quitamos el ultimo AND sobrante
 			int cant=where.length();
@@ -578,8 +578,63 @@ public class Modelo {
 				miInterfaz2_Director.generaFiltro(getTabla(listadoAlumno+" where"+where));
 			if(inter.equals("inter21D"))
 				miInterfaz2_1_Director.generaFiltro(getTabla(listadoAlumno+" where"+where));
+
+		}
+		
+	}
+	
+	public void filtrarLisEmp(String where, String inter) {
+		if(where=="")
+			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar","Adevertencia", JOptionPane.WARNING_MESSAGE);
+		else {
+			//Quitamos el ultimo AND sobrante
+			int cant=where.length();
+			where = where.subSequence(0, cant-4).toString();
+			//Creamos la consulta y pasamos la condición where y devolvemos el filtrado a la interfaz que sea
+			if(inter.equals("inter3T")) {
+				miInterfaz3.generaFiltro(getTabla(listadoEmpresa+" where"+where));
+			}
+			if(inter.equals("inter31T"))
+				miInterfaz3_1.generaFiltro(getTabla(listadoEmpresa+" where"+where));
+			if(inter.equals("inter3D"))
+				miInterfaz3_Director.generaFiltro(getTabla(listadoEmpresa+" where"+where));
 			
-			
+		}
+		
+	}
+	
+	public void filtrarLisPra(String where, String inter) {
+		if(where=="")
+			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar","Adevertencia", JOptionPane.WARNING_MESSAGE);
+		else {
+			//Quitamos el ultimo AND sobrante
+			int cant=where.length();
+			where = where.subSequence(0, cant-4).toString();
+			//Creamos la consulta y pasamos la condición where y devolvemos el filtrado a la interfaz que sea
+			if(inter.equals("inter4T")) {
+				miInterfaz4.generaFiltro(getTabla(listadoPracticas+" where"+where));
+			}
+			if(inter.equals("inter4D")) {
+				miInterfaz4_Director.generaFiltro(getTabla(listadoPracticas+" where"+where));	
+			}
+				
+		}
+		
+	}
+	
+	public void filtrarLisTut(String where, String inter) {
+		if(where=="")
+			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar","Adevertencia", JOptionPane.WARNING_MESSAGE);
+		else {
+			//Quitamos el ultimo AND sobrante
+			int cant=where.length();
+			where = where.subSequence(0, cant-4).toString();
+			//Creamos la consulta y pasamos la condición where y devolvemos el filtrado a la interfaz que sea
+			if(inter.equals("inter5D")) {
+				miInterfaz5_Director.generaFiltro(getTabla(sqlListadoTutor+" where"+where));
+			}
+				if(inter.equals("inter51D"))
+				miInterfaz5_1_Director.generaFiltro(getTabla(sqlListadoTutor+" where"+where));
 		}
 		
 	}

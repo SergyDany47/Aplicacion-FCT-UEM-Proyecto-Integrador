@@ -119,6 +119,8 @@ public class Interfaz_5_Director extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter5D";
+				miControlador.filtrarLisTut(getDatos(),inter);
 			}
 		});
 
@@ -214,5 +216,17 @@ public class Interfaz_5_Director extends JFrame {
 		btnListAlumnos.setBackground(SystemColor.info);
 		btnListAlumnos.setBounds(698, 11, 180, 30);
 		contentPane.add(btnListAlumnos);
+	}
+	public String [] getDatos(){
+		String [] datos = new String[6];
+		datos[0]=txtDNITutor.getText();
+		datos[1]=txtNombre_1.getText();
+		datos[2]=txtApellidos.getText();
+		datos[3]=txtCodigoCentro.getText();
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		tablaListaTutor.setModel(tabla);
 	}
 }
