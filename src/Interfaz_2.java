@@ -96,7 +96,7 @@ public class Interfaz_2 extends JFrame {
 		txtEdad.setBounds(528, 37, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Edad");
+		txtEdad.setText("Fecha.Nacimiento");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
@@ -139,6 +139,8 @@ public class Interfaz_2 extends JFrame {
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String inter = "inter2T";
+				miControlador.filtrarLisAlum(getDatos(),inter);
 			}
 		});
 
@@ -233,4 +235,19 @@ public class Interfaz_2 extends JFrame {
 		contentPane.add(btnAsigPractica);
 		btnAsigPractica.setFont(new Font("Arial", Font.PLAIN, 14));
 	}
+	public String [] getDatos(){
+		String [] datos = new String[6];
+		datos[0]=txtNumExpediente.getText();
+		datos[1]=txtApellidos.getText();
+		datos[2]=txtNombre.getText();
+		datos[3]=txtDNI.getText();
+		datos[4]=txtEdad.getText();
+		datos[5]=txtNacionalidad.getText();
+		return datos;
+	}
+
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
+	}
+
 }

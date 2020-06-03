@@ -357,4 +357,23 @@ public class Controlador {
 
 	}
 
+	public void filtrarLisAlum(String[] datos, String inter) {
+		String where="";
+		if(!datos[0].equals("") && !datos[0].equals("Num.Expediente"))
+			where+=" num_exp LIKE '"+datos[0]+"%' AND";
+		if(!datos[3].equals("") && !datos[3].equals("DNI"))
+			where+=" dni LIKE '"+datos[3]+"%' AND";
+		if(!datos[2].equals("") && !datos[2].equals("Nombre"))
+			where+=" nombre LIKE '"+datos[2]+"%' AND";
+		if(!datos[1].equals("") && !datos[1].equals("Apellidos"))
+			where+=" apellidos LIKE '"+datos[1]+"%' AND";
+		if(!datos[4].equals("") && !datos[4].equals("Fecha.Nacimiento"))
+			where+=" fec_naci LIKE '"+datos[4]+"%' AND";
+		if(!datos[5].equals("") && !datos[5].equals("Nacionalidad"))
+			where+=" nacionalidad LIKE '"+datos[5]+"%' AND";
+		
+		miModelo.filtrarLisAlum(where, inter);
+	}
+
+
 }
