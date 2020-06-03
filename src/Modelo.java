@@ -554,7 +554,20 @@ public class Modelo {
 		} catch (SQLException e) {
 			insertado = false;
 			System.out.println("Algún dato incorrecto.");
+		}catch (Exception es) {
+			System.out.println("Algún dato incorrecto.");
 		}
 
+	}
+	public void borrarPracticas(String exp, String cif) {
+		String sql = "DELETE FROM sebas.practica WHERE empresa_cif = ? and alumno_num_exp = ?";
+		try {
+			PreparedStatement stmt = conexion.prepareStatement(sql);
+			stmt.setString(1, cif);
+			stmt.setString(2, exp);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

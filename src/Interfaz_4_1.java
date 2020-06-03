@@ -15,12 +15,19 @@ import javax.swing.ListSelectionModel;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * @author WomanDam
+ *
+ */
 public class Interfaz_4_1 extends JFrame {
 
 	private Controlador miControlador;
@@ -30,7 +37,7 @@ public class Interfaz_4_1 extends JFrame {
 	private JScrollPane scrollPane;
 	private JLabel lblTitulo;
 	private JButton btnFiltrar;
-	private JButton btnGenerarAnexo;
+	private JButton btnBorrar;
 	private JButton btnAtras;
 	private JLabel lblFondo;
 	private JPanel panel;
@@ -41,19 +48,44 @@ public class Interfaz_4_1 extends JFrame {
 	private JButton btnGuardarTodo;
 	private JPanel panel_1;
 
+	/**
+	 * Comunicación para el Controlador
+	 * 
+	 * @param miControlador
+	 */
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	}
 
+	/**
+	 * Comunicación para el Modelo
+	 * 
+	 * @param miModelo
+	 */
 	public void setMiModelo(Modelo miModelo) {
 		this.miModelo = miModelo;
 	}
 
+	/**
+	 * Interfaz_4_1
+	 */
 	public Interfaz_4_1() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		setTitle("Interfaz 4.1: Asignar Practicas");
 		contentPane = new JPanel();
+		
+		/**
+		 * Deseleccionar filas
+		 */
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				table.getSelectionModel().clearSelection();
+				table_1.getSelectionModel().clearSelection();
+				table_2.getSelectionModel().clearSelection();
+			}
+		});
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,6 +99,18 @@ public class Interfaz_4_1 extends JFrame {
 		panel_1.setLayout(null);
 
 		panel = new JPanel();
+		
+		/**
+		 * Deseleccionar filas
+		 */
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				table.getSelectionModel().clearSelection();
+				table_1.getSelectionModel().clearSelection();
+				table_2.getSelectionModel().clearSelection();
+			}
+		});
 		panel.setToolTipText("");
 		panel.setBackground(new Color(192, 192, 192, 180));
 		panel.setBounds(0, 87, 1275, 594);
@@ -80,6 +124,9 @@ public class Interfaz_4_1 extends JFrame {
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
+		/**
+		 * Obtener Datos Lista de Alumnos
+		 */
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent e) {
 				String ssql = miModelo.getListadoAlumnos();
@@ -88,22 +135,49 @@ public class Interfaz_4_1 extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 
-		btnGenerarAnexo = new JButton("Borrar ");
-		btnGenerarAnexo.setBounds(656, 545, 100, 30);
-		panel.add(btnGenerarAnexo);
-		btnGenerarAnexo.setBackground(SystemColor.inactiveCaption);
-		btnGenerarAnexo.addActionListener(new ActionListener() {
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.setBounds(766, 545, 100, 30);
+		panel.add(btnBorrar);
+		btnBorrar.setBackground(SystemColor.inactiveCaption);
+		/**
+		 * Alert Borrar
+		 * 
+		 * Advierte de los fallos
+		 */
+		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int fsel = table_1.getSelectedRow();
+				int resp = JOptionPane.YES_NO_OPTION;
+				int option;
+				if (fsel == -1) {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar el producto a eliminar", "Advertencia",
+							JOptionPane.WARNING_MESSAGE);
+				} else {
+					option = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este producto?", "Eliminar",
+							resp);
 
+					if (option == 0) {
+						getNumExCif();
+						JOptionPane.showMessageDialog(null, "La fila ha sido borrada con éxito", "Advertencia",
+								JOptionPane.INFORMATION_MESSAGE);
+
+					}
+
+				}
 			}
 		});
-		btnGenerarAnexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		btnFiltrar = new JButton("Unir");
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(546, 126, 100, 30);
 		panel.add(btnFiltrar);
 		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		/**
+		 * Alert Filtrar
+		 * 
+		 * Advierte de los fallos
+		 */
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -117,8 +191,8 @@ public class Interfaz_4_1 extends JFrame {
 						JOptionPane.showMessageDialog(null, "La nueva fila ha sido insertada con éxito", "Advertencia",
 								JOptionPane.INFORMATION_MESSAGE);
 					} else {
-						JOptionPane.showMessageDialog(null, "La nueva fila no ha sido insertada, datos ya existentes ",
-								"Advertencia", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "La nueva fila no ha sido insertada", "Advertencia",
+								JOptionPane.INFORMATION_MESSAGE);
 
 					}
 				}
@@ -153,12 +227,6 @@ public class Interfaz_4_1 extends JFrame {
 			}
 		});
 
-		btnGuardarTodo = new JButton("Guardar ");
-		btnGuardarTodo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnGuardarTodo.setBackground(SystemColor.inactiveCaption);
-		btnGuardarTodo.setBounds(766, 545, 100, 30);
-		panel.add(btnGuardarTodo);
-
 		lblNewLabel = new JLabel("Vista de Asignaci\u00F3n");
 		lblNewLabel.setBounds(444, 293, 326, 45);
 		panel.add(lblNewLabel);
@@ -188,17 +256,36 @@ public class Interfaz_4_1 extends JFrame {
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
 	}
 
-	private void getSeleccion() {
-		int filaAumnos = table.getSelectedRow();
-		int filaEmpresa = table_2.getSelectedRow();
-		String exp = (String) table.getValueAt(filaAumnos, 0);
-		String dni = (String) table.getValueAt(filaAumnos, 3);
-		String nombreAl = (String) table.getValueAt(filaAumnos, 1);
-		String apellido = (String) table.getValueAt(filaAumnos, 2);
-		String cif = (String) table_2.getValueAt(filaEmpresa, 0);
-		String nombreEm = (String) table_2.getValueAt(filaEmpresa, 1);
-		String responsable = (String) table_2.getValueAt(filaEmpresa, 4);
-		miModelo.datosPracticas(exp, dni, nombreAl, apellido, cif, nombreEm, responsable);
+	/**
+	 * Seleccionar las filas para asignar prácticas
+	 */
 
+	private void getSeleccion() {
+		try {
+			int filaAumnos = table.getSelectedRow();
+			int filaEmpresa = table_2.getSelectedRow();
+			String exp = (String) table.getValueAt(filaAumnos, 0);
+			String dni = (String) table.getValueAt(filaAumnos, 3);
+			String nombreAl = (String) table.getValueAt(filaAumnos, 1);
+			String apellido = (String) table.getValueAt(filaAumnos, 2);
+			String cif = (String) table_2.getValueAt(filaEmpresa, 0);
+			String nombreEm = (String) table_2.getValueAt(filaEmpresa, 1);
+			String responsable = (String) table_2.getValueAt(filaEmpresa, 4);
+			miModelo.datosPracticas(exp, dni, nombreAl, apellido, cif, nombreEm, responsable);
+		} catch (Exception e) {
+			System.out.println("Se debe seleccionar una fila por cada tabla a asignar(Alumno/Empresa)");
+		}
+
+	}
+
+	/**
+	 * Para poder borrar filas de tabla de Asignación
+	 */
+	public void getNumExCif() {
+
+		int fila = table_1.getSelectedRow();
+		String numExp = (String) table_1.getValueAt(fila, 0);
+		String cif = (String) table_1.getValueAt(fila, 4);
+		miModelo.borrarPracticas(numExp, cif);
 	}
 }
