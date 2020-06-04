@@ -78,7 +78,7 @@ public class InformeAseguradoras extends JFrame {
 		scrollPane.setViewportView(table);
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent e) {
-				String ssql = miModelo.getListadoAlumnos();
+				String ssql = miModelo.getAseguradoras();
 				table.setModel(miModelo.getTabla(ssql));
 			}
 		});

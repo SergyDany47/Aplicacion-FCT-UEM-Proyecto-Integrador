@@ -16,8 +16,22 @@ public class Controlador {
 	private Interfaz_5_1_Director miInterfaz5_1_Director;
 	private Formulario miFormulario;
 	private InformesGenerales miGenerales;
-
+	private InformesFCT miFCT;
+	private InformeAseguradoras miAseguradora;
 	private Modelo miModelo;
+
+	/**
+	 * 
+	 * setters para que el controlador y las diversas interfaces se conozcan.
+	 */
+
+	public void setMiFCT(InformesFCT miFCT) {
+		this.miFCT = miFCT;
+	}
+
+	public void setMiAseguradora(InformeAseguradoras miAseguradora) {
+		this.miAseguradora = miAseguradora;
+	}
 
 	public void setMiLogin(LogIn miLogin) {
 		this.miLogin = miLogin;
@@ -86,11 +100,15 @@ public class Controlador {
 	public void setMiModelo(Modelo miModelo) {
 		this.miModelo = miModelo;
 	}
-	
+
 	public void setMiGenerales(InformesGenerales miGenerales) {
 		this.miGenerales = miGenerales;
 	}
 
+	/**
+	 * Estos metodos son para los botones. Lo que hacen es que dependiendo del boton
+	 * al que des se vea o no la clase/interfaz.
+	 */
 	public void abrirFormulario() {
 		miFormulario.setVisible(true);
 		miLogin.setVisible(false);
@@ -171,6 +189,8 @@ public class Controlador {
 		miInterfaz3_Director.setVisible(false);
 		miInterfaz5_Director.setVisible(false);
 		miGenerales.setVisible(false);
+		miFCT.setVisible(false);
+		miAseguradora.setVisible(false);
 	}
 
 	public void adminPracticas() {
@@ -217,13 +237,28 @@ public class Controlador {
 		miInterfaz4_1.setVisible(true);
 		miInterfaz4.setVisible(false);
 	}
-	
+
 	public void informesGenerales() {
 		miGenerales.setVisible(true);
 		miInterfaz2_Director.setVisible(false);
-		
+
 	}
 
+	public void informesFCT() {
+		miFCT.setVisible(true);
+		miInterfaz2_Director.setVisible(false);
+
+	}
+
+	public void informesAseguradora() {
+		miAseguradora.setVisible(true);
+		miInterfaz2_Director.setVisible(false);
+	}
+
+	/**
+	 * Aqui hay algunos metodos para recoger variables de las diversas interfaces y
+	 * trasladarlo a ellas o al modelo directamente.
+	 */
 	public void login() {
 		String usr = miLogin.getUsuario();
 		String pwd = miLogin.getPassword();
@@ -369,6 +404,13 @@ public class Controlador {
 
 	}
 
+	// Los siguientes metodos son para la funcion de filtardo
+	// creando arrrays para recoger la informacion de la sql de modelo.
+
+	/**
+	 * @param datos
+	 * @param inter
+	 */
 	public void filtrarLisAlum(String[] datos, String inter) {
 		String where = "";
 		if (!datos[0].equals("") && !datos[0].equals("Num.Expediente"))
@@ -387,6 +429,11 @@ public class Controlador {
 		miModelo.filtrarLisAlum(where, inter);
 	}
 
+	/**
+	 * 
+	 * @param datos
+	 * @param inter
+	 */
 	public void filtrarLisEmpr(String[] datos, String inter) {
 		String where = "";
 		if (!datos[0].equals("") && !datos[0].equals("CIF"))
@@ -405,6 +452,11 @@ public class Controlador {
 		miModelo.filtrarLisEmp(where, inter);
 	}
 
+	/**
+	 * 
+	 * @param datos
+	 * @param inter
+	 */
 	public void filtrarLisPra(String[] datos, String inter) {
 		String where = "";
 		if (!datos[0].equals("") && !datos[0].equals("DNI"))
@@ -425,6 +477,11 @@ public class Controlador {
 		miModelo.filtrarLisPra(where, inter);
 	}
 
+	/**
+	 * 
+	 * @param datos
+	 * @param inter
+	 */
 	public void filtrarLisTut(String[] datos, String inter) {
 		String where = "";
 		if (!datos[0].equals("") && !datos[0].equals("DNI del tutor"))

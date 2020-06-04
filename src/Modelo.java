@@ -39,6 +39,7 @@ public class Modelo {
 	private boolean insertado;
 
 	private DefaultTableModel table;
+	// Aqui estan todas las SQl que hemos tenido que ir añadiendo
 	private String listadoAlumno = "SELECT num_exp \"EXPEDIENTE\",nombre,apellidos,dni,"
 			+ "trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"EDAD\""
 			+ ",nacionalidad FROM ELFREDERIC.alumno";
@@ -66,6 +67,12 @@ public class Modelo {
 	private String TutorCiclo = "SELECT ge.Anio_academico \"Año\", g.nombre_ciclo \"Ciclo\", t.dni_tutor \"DNI\", t.nombre \"Nombre\", t.apellidos \"Apellidos\", c.cod_centro \"Centro\", g.cod_grupo \"Grupo\" \r\n"
 			+ "FROM ELFREDERIC.gestiona ge, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.centro c\r\n"
 			+ "WHERE g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor AND t.centro_cod_centro=c.cod_centro";
+	private String InformeFct = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", g.nom_grupo \"Grupo\", e.nombre \"Empresa\", e.localidad \"Provincia\", e.resp_e \"Resp E.\", p.tutorE \"Tutor E.\", e.telefono \"TLF.\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"F. Ini-Fin\", t.nombre \"Tutor C.\", p.email_t \"Email\" \r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.pertenece pe, ELFREDERIC.gestiona ge \r\n"
+			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor";
+	private String Aseguradoras = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", a.dni \"DNI\", e.localidad \"Localidad\", e.nombre \"Empresa\", a.nacionalidad \"Nacional.\", trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"Edad\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"Periodo\"  \r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.pertenece pe\r\n"
+			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp  AND pe.grupo_cod_grupo=g.cod_grupo";
 
 	private String user = "";
 	private String pas = "";
@@ -74,7 +81,12 @@ public class Modelo {
 	private Connection conexion;
 	private Nuevo_Usuario miNuevo_Usuario;
 	private InformesGenerales miGenerales;
+	private InformesFCT miFCT;
+	private InformeAseguradoras miAseguradora;
 
+	/**
+	 * Este metodo seleccona e fichero ini y recoge datos de el.
+	 */
 	public void seleccionarFichero() {
 
 		File file = new File("Ajustes.ini");
@@ -117,6 +129,9 @@ public class Modelo {
 		return this.miUrl;
 	}
 
+	/**
+	 * Este metodo es para la conexion con la BBDD.
+	 */
 	public void ConexionBBDD() {
 		try {
 			seleccionarFichero();
@@ -141,6 +156,12 @@ public class Modelo {
 		}
 	}
 
+	/**
+	 * Este metodo es para el inicio de sesion como tutor/director.
+	 * 
+	 * @param usr
+	 * @param pwd
+	 */
 	public void InicioSesion(String usr, String pwd) {
 
 		String ssql = "SELECT * FROM ELFREDERIC.users WHERE usr=? AND pwd=?";
@@ -170,6 +191,11 @@ public class Modelo {
 
 	}
 
+	/**
+	 * Este metodo es para saber el rol en el que debe entrar la aplicacion.
+	 * 
+	 * @param usr
+	 */
 	public void consultaStatement(String usr) {
 
 		String ssql = "SELECT rol FROM ELFREDERIC.users WHERE usr='" + usr + "'";
@@ -190,6 +216,11 @@ public class Modelo {
 		}
 
 	}
+
+	/**
+	 * 
+	 * setters para que el modelo y las diversas interfaces se conozcan.
+	 */
 
 	public String getResultado() {
 		return this.resultado;
@@ -258,9 +289,17 @@ public class Modelo {
 	public void setMiNuevo_Usuario(Nuevo_Usuario miNuevo_Usuario) {
 		this.miNuevo_Usuario = miNuevo_Usuario;
 	}
-	
+
 	public void setMiGenerales(InformesGenerales miGenerales) {
 		this.miGenerales = miGenerales;
+	}
+
+	public void setMiFCT(InformesFCT miFCT) {
+		this.miFCT = miFCT;
+	}
+
+	public void setMiAseguradora(InformeAseguradoras miAseguradora) {
+		this.miAseguradora = miAseguradora;
 	}
 
 	private int getNumColumnas(String ssql) {
@@ -276,6 +315,13 @@ public class Modelo {
 		return num;
 	}
 
+	/**
+	 * Este metodo lo que hace es recuperar y expner la tabla en las interfaces
+	 * recogiendola de la BBDD.
+	 * 
+	 * @param ssql
+	 * @return tabla
+	 */
 	public DefaultTableModel getTabla(String ssql) {
 		table = new DefaultTableModel();
 		int numColumnas = getNumColumnas(ssql);
@@ -298,6 +344,20 @@ public class Modelo {
 			e.printStackTrace();
 		}
 		return table;
+	}
+
+	/**
+	 * 
+	 * Aqui manadamos las sql de arriba hacia las diversas tablas repartidas en las
+	 * interfaes
+	 * 
+	 */
+	public String getInformeFct() {
+		return InformeFct;
+	}
+
+	public String getAseguradoras() {
+		return Aseguradoras;
 	}
 
 	public String getAlumnosTutor() {
@@ -345,6 +405,8 @@ public class Modelo {
 
 	}
 
+	// Los siguientes metodos son para la modificacion,eliminacion e insertado de
+	// Alumnos/Empresa/Practicas/Tutor.
 	public void GuardarListadoAlumnos(String tabla, String NombreArchivo) {
 		File archivo = new File(NombreArchivo);
 		try {
@@ -361,6 +423,13 @@ public class Modelo {
 		}
 	}
 
+	/**
+	 * 
+	 * @param usuario
+	 * @param password
+	 * @param rol
+	 * @param email
+	 */
 	public void insertarUsuario(String usuario, String password, String rol, String email) {
 		String query = "INSERT INTO ELFREDERIC.users(usr, rol, pwd, email) VALUES(?, ?, ?, ?)";
 		try {
@@ -379,6 +448,15 @@ public class Modelo {
 		miNuevo_Usuario.actualizar();
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param fecha
+	 * @param num_exp
+	 * @param dni
+	 * @param nacionalidad
+	 */
 	public void insertarAlumnos(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad) {
 		String sql = "INSERT INTO ELFREDERIC.alumno (dni,nombre,apellidos,num_exp,fec_naci,nacionalidad) VALUES(?, ?, ?, ?, ?, ?)";
@@ -401,20 +479,36 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param num_exp
+	 */
 	public void borrarAlumnos(String num_exp) {
 		String sql = "DELETE FROM ELFREDERIC.alumno WHERE num_exp = ?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, num_exp);
 			stmt.executeUpdate();
+			insertado = true;
 			System.out.println("Eliminado con exito");
 
 		} catch (SQLException e) {
+			insertado = false;
 			System.out.println("Algun dato incorrecto.");
 		}
 
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param fecha
+	 * @param num_exp
+	 * @param dni
+	 * @param nacionalidad
+	 * @param dniant
+	 */
 	public void modificarAlumno(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad, String dniant) {
 		String sql = "UPDATE ELFREDERIC.alumno SET num_exp=?,dni=?,nombre=?,apellidos=?,fec_naci=?,nacionalidad=? WHERE dni=? ";
@@ -438,6 +532,15 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param tlf
+	 * @param cif
+	 * @param localidad
+	 * @param responsable
+	 * @param direccion
+	 */
 	public void insertarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion) {
 		String sql = "INSERT INTO ELFREDERIC.empresa (cif,nombre,direccion,telefono,resp_e,localidad) VALUES(?, ?, ?, ?, ?, ?)";
@@ -460,20 +563,36 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param cif
+	 */
 	public void borrarEmpresa(String cif) {
 		String sql = "DELETE FROM ELFREDERIC.empresa WHERE cif=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
 			stmt.executeUpdate();
+			insertado = true;
 			System.out.println("Guardado con exito");
 
 		} catch (SQLException e) {
+			insertado = false;
 			System.out.println("Algun dato incorrecto.");
 		}
 
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param tlf
+	 * @param cif
+	 * @param localidad
+	 * @param responsable
+	 * @param direccion
+	 * @param cifOld
+	 */
 	public void modificarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion, String cifOld) {
 		String sql = "UPDATE ELFREDERIC.empresa SET cif=?,nombre=?,direccion=?,telefono=?,resp_e=?,localidad=? WHERE cif=? ";
@@ -496,6 +615,13 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param cod
+	 * @param dni
+	 */
 	public void insertarTutor(String nombre, String apellido, String cod, String dni) {
 		String sql = "INSERT INTO ELFREDERIC.tutor (dni_tutor,nombre,apellidos,centro_cod_centro) VALUES(?, ?, ?, ?)";
 		try {
@@ -515,6 +641,14 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param cod
+	 * @param dni
+	 * @param dniOld
+	 */
 	public void modificarTutor(String nombre, String apellido, String cod, String dni, String dniOld) {
 		String sql = "UPDATE ELFREDERIC.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
 		try {
@@ -535,19 +669,30 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param dni
+	 */
 	public void borrarTutor(String dni) {
 		String sql = "DELETE FROM ELFREDERIC.tutor WHERE dni_tutor=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
 			stmt.executeUpdate();
+			insertado = true;
 			System.out.println("Guardado con exito");
 
 		} catch (SQLException e) {
+			insertado = false;
 			System.out.println("Algun dato incorrecto.");
 		}
 	}
 
+	/**
+	 * 
+	 * @param dni
+	 * @return Array para sacar bien la edad y su fecha
+	 */
 	public String[] updateAlumno(String dni) {
 		String[] datos = new String[2];
 		String updateAlumno = "Select dni, fec_naci from ELFREDERIC.alumno where dni='" + dni + "'";
@@ -574,6 +719,17 @@ public class Modelo {
 		return resultado;
 	}
 
+	/**
+	 * Insertado en practica mediante boton de unir
+	 * 
+	 * @param exp
+	 * @param dni
+	 * @param nombreAl
+	 * @param apellido
+	 * @param cif
+	 * @param nombreEm
+	 * @param responsable
+	 */
 	public void datosPracticas(String exp, String dni, String nombreAl, String apellido, String cif, String nombreEm,
 			String responsable) {
 		String sql = "INSERT INTO ELFREDERIC.practica (empresa_cif, alumno_num_exp, dni_alumno, nombre_al, apellido_al, nombre_emp, responsable_emp) "
@@ -600,6 +756,11 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param exp
+	 * @param cif
+	 */
 	public void borrarPracticas(String exp, String cif) {
 		String sql = "DELETE FROM ELFREDERIC.practica WHERE empresa_cif = ? and alumno_num_exp = ?";
 		try {
@@ -607,12 +768,20 @@ public class Modelo {
 			stmt.setString(1, cif);
 			stmt.setString(2, exp);
 			stmt.executeUpdate();
+			insertado = true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			insertado = false;
+			System.out.println("Algún dato incorrecto.");
 		}
 
 	}
 
+	// Los siguientes metodos son para realizar el filtardo en las diversas tablas.
+	/**
+	 * 
+	 * @param where
+	 * @param inter
+	 */
 	public void filtrarLisAlum(String where, String inter) {
 		if (where == "")
 			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Adevertencia",
@@ -639,6 +808,11 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param where
+	 * @param inter
+	 */
 	public void filtrarLisEmp(String where, String inter) {
 		if (where == "")
 			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Adevertencia",
@@ -661,6 +835,11 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param where
+	 * @param inter
+	 */
 	public void filtrarLisPra(String where, String inter) {
 		if (where == "")
 			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Adevertencia",
@@ -682,6 +861,11 @@ public class Modelo {
 
 	}
 
+	/**
+	 * 
+	 * @param where
+	 * @param inter
+	 */
 	public void filtrarLisTut(String where, String inter) {
 		if (where == "")
 			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Adevertencia",

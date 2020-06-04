@@ -48,6 +48,8 @@ public class Interfaz_2_Director extends JFrame {
 	private JButton btnListTutores;
 	private JButton btnGuardarFichero;
 	private JButton btnInformesGenerales;
+	private JButton btnInformesFct;
+	private JButton btnInformesAseguradoras;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -247,7 +249,7 @@ public class Interfaz_2_Director extends JFrame {
 		btnListTutores.setBackground(SystemColor.info);
 		btnListTutores.setBounds(693, 11, 180, 30);
 		contentPane.add(btnListTutores);
-		
+
 		btnInformesGenerales = new JButton("Informes Generales");
 		btnInformesGenerales.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnInformesGenerales.setBackground(SystemColor.info);
@@ -258,6 +260,29 @@ public class Interfaz_2_Director extends JFrame {
 				miControlador.informesGenerales();
 			}
 		});
+
+		btnInformesFct = new JButton("Informes FCT");
+		btnInformesFct.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnInformesFct.setBackground(SystemColor.info);
+		btnInformesFct.setBounds(883, 52, 180, 30);
+		contentPane.add(btnInformesFct);
+		btnInformesFct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miControlador.informesFCT();
+			}
+		});
+
+		btnInformesAseguradoras = new JButton("Informes Aseguradoras");
+		btnInformesAseguradoras.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnInformesAseguradoras.setBackground(SystemColor.info);
+		btnInformesAseguradoras.setBounds(1073, 52, 180, 30);
+		contentPane.add(btnInformesAseguradoras);
+		btnInformesAseguradoras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miControlador.informesAseguradora();
+			}
+		});
+
 	}
 
 	public String[] getDatos() {
