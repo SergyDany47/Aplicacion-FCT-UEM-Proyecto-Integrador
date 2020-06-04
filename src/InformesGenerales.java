@@ -43,8 +43,7 @@ public class InformesGenerales extends JFrame {
 	private JScrollPane scrollPane_1_1;
 	private JLabel lblAlumnosEnPracticas;
 	private JScrollPane scrollPane_2;
-	
-	
+
 	/**
 	 * Comunicación para el Controlador
 	 * 
@@ -132,7 +131,6 @@ public class InformesGenerales extends JFrame {
 		});
 		scrollPane.setViewportView(tableAlumnosTutor);
 
-		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(696, 88, 530, 185);
 		panel.add(scrollPane_1);
@@ -166,23 +164,23 @@ public class InformesGenerales extends JFrame {
 		panel.add(lblTutorCiclo);
 		lblTutorCiclo.setFont(new Font("Arial", Font.PLAIN, 37));
 		lblTutorCiclo.setForeground(new Color(153, 0, 51));
-		
+
 		lblAlumnosPorTutor = new JLabel("Alumnos Por Tutor");
 		lblAlumnosPorTutor.setBounds(115, 32, 326, 45);
 		panel.add(lblAlumnosPorTutor);
 		lblAlumnosPorTutor.setForeground(new Color(153, 0, 51));
 		lblAlumnosPorTutor.setFont(new Font("Arial", Font.PLAIN, 37));
-		
+
 		lblAlumnosPorEmpresa = new JLabel("Alumnos Por Empresa");
 		lblAlumnosPorEmpresa.setForeground(new Color(153, 0, 51));
 		lblAlumnosPorEmpresa.setFont(new Font("Arial", Font.PLAIN, 37));
 		lblAlumnosPorEmpresa.setBounds(775, 32, 377, 45);
 		panel.add(lblAlumnosPorEmpresa);
-		
+
 		scrollPane_1_1 = new JScrollPane();
 		scrollPane_1_1.setBounds(696, 370, 530, 185);
 		panel.add(scrollPane_1_1);
-		
+
 		tableAlumnosPractica = new JTable();
 		tableAlumnosPractica.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane_1_1.setViewportView(tableAlumnosPractica);
@@ -192,7 +190,7 @@ public class InformesGenerales extends JFrame {
 				tableAlumnosPractica.setModel(miModelo.getTabla(ssql));
 			}
 		});
-		
+
 		lblAlumnosEnPracticas = new JLabel("Alumnos En Practicas");
 		lblAlumnosEnPracticas.setForeground(new Color(153, 0, 51));
 		lblAlumnosEnPracticas.setFont(new Font("Arial", Font.PLAIN, 37));
