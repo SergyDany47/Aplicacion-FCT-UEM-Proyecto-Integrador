@@ -21,7 +21,7 @@ public class LogIn extends JFrame {
 	private Interfaz_2 miInterfaz2 = new Interfaz_2();
 	private JPanel contentPane;
 	private JLabel lbUsuario;
-	private JLabel lblContrase�a;
+	private JLabel lblContrasenia;
 	private JLabel lblTitulo;
 	private JTextField txtUsuario;
 	private JButton btnAcceder;
@@ -103,11 +103,11 @@ public class LogIn extends JFrame {
 		panel_1.add(lbUsuario);
 		lbUsuario.setFont(new Font("Arial", Font.PLAIN, 16));
 
-		lblContrase�a = new JLabel("Contrase\u00F1a ");
-		lblContrase�a.setBounds(44, 224, 97, 14);
-		panel_1.add(lblContrase�a);
-		lblContrase�a.setForeground(new Color(255, 255, 255));
-		lblContrase�a.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblContrasenia = new JLabel("Contrase\u00F1a ");
+		lblContrasenia.setBounds(44, 224, 97, 14);
+		panel_1.add(lblContrasenia);
+		lblContrasenia.setForeground(new Color(255, 255, 255));
+		lblContrasenia.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(LogIn.class.getResource("/Imagenes/LogUem.png")));
