@@ -15,13 +15,13 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 public class LogIn extends JFrame {
-
+	//Declaraciones
 	private Controlador miControlador;
 	private Modelo miModelo;
 	private Interfaz_2 miInterfaz2 = new Interfaz_2();
 	private JPanel contentPane;
 	private JLabel lbUsuario;
-	private JLabel lblContraseña;
+	private JLabel lblContraseï¿½a;
 	private JLabel lblTitulo;
 	private JTextField txtUsuario;
 	private JButton btnAcceder;
@@ -33,7 +33,7 @@ public class LogIn extends JFrame {
 	private JLabel lblRespuesta;
 	private JButton btnAjustes;
 	private Formulario miFormulario = new Formulario();
-
+	//Getters y Setters
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	}
@@ -51,7 +51,7 @@ public class LogIn extends JFrame {
 		String pwd = String.valueOf(passwordField.getPassword());
 		return pwd;
 	}
-
+	//Codigo de la interfaz
 	public LogIn() {
 		setTitle("Log In");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -103,11 +103,11 @@ public class LogIn extends JFrame {
 		panel_1.add(lbUsuario);
 		lbUsuario.setFont(new Font("Arial", Font.PLAIN, 16));
 
-		lblContraseña = new JLabel("Contrase\u00F1a ");
-		lblContraseña.setBounds(44, 224, 97, 14);
-		panel_1.add(lblContraseña);
-		lblContraseña.setForeground(new Color(255, 255, 255));
-		lblContraseña.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblContraseï¿½a = new JLabel("Contrase\u00F1a ");
+		lblContraseï¿½a.setBounds(44, 224, 97, 14);
+		panel_1.add(lblContraseï¿½a);
+		lblContraseï¿½a.setForeground(new Color(255, 255, 255));
+		lblContraseï¿½a.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(LogIn.class.getResource("/Imagenes/LogUem.png")));
@@ -154,27 +154,27 @@ public class LogIn extends JFrame {
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setFont(new Font("Arial Black", Font.PLAIN, 30));
 	}
-
+	//Se asegura de que el usuario y contrasena sean correctos
 	public void actualizar(String usr) {
 		String resultado = miModelo.getResultado();
 		if (resultado.equals("correcto")) {
 			miModelo.consultaStatement(usr);
 		} else if (resultado.equals("incorrecto")) {
-			lblRespuesta.setText("Usuario o contraseña INCORRECTO!!!");
+			lblRespuesta.setText("Usuario o contraseï¿½a INCORRECTO!!!");
 		}
 
 	}
-
+	//Deja los campos de usuario y contrasena vacios
 	private void limpiarCampos() {
 		txtUsuario.setText(null);
 		passwordField.setText(null);
 
 	}
-
+	//Permite entrar a la aplicacion como tutor
 	public void vistaTutor() {
 		miControlador.inicioSesionTutor();
 	}
-
+	//Permite entrar como director
 	public void vistaDirector() {
 		miControlador.inicioSesionDirector();
 	}

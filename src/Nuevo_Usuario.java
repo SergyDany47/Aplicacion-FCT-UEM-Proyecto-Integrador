@@ -19,7 +19,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
 public class Nuevo_Usuario extends JFrame {
-
+	//Declaraciones
 	private Controlador miControlador;
 	private Modelo miModelo;
 	private Interfaz_2 miInterfaz2 = new Interfaz_2();
@@ -42,7 +42,7 @@ public class Nuevo_Usuario extends JFrame {
 	private JButton btnVolver;
 	private JRadioButton rdbtnTutor;
 	private JRadioButton rdbtnDirector;
-
+	//Getters y setters
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	}
@@ -69,7 +69,7 @@ public class Nuevo_Usuario extends JFrame {
 			return null;
 		}
 	}
-
+	//Sirve para saber si es Tutor o Director
 	public String getRol() {
 		if (rdbtnTutor.isSelected()) {
 			return "tutor";
@@ -78,7 +78,7 @@ public class Nuevo_Usuario extends JFrame {
 		}
 		return null;
 	}
-
+	//Codigo para la interfaz
 	public Nuevo_Usuario() {
 		setTitle("Registro de Usuarios");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -201,7 +201,7 @@ public class Nuevo_Usuario extends JFrame {
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setFont(new Font("Arial Black", Font.PLAIN, 30));
 	}
-
+	//Nos informa si el usuario es creado correctamente
 	public void actualizar() {
 		System.out.println("Usuario creado correctamente.");
 		miControlador.cerrarSesion();
