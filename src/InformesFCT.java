@@ -31,12 +31,10 @@ public class InformesFCT extends JFrame {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JLabel lblTitulo;
-	private JButton btnFiltrar;
 	private JButton btnAtras;
 	private JLabel lblFondo;
 	private JPanel panel;
 	private JPanel panel_1;
-	private JButton btnGuardarFichero;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -78,7 +76,7 @@ public class InformesFCT extends JFrame {
 		scrollPane.setViewportView(table);
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent e) {
-				String ssql = miModelo.getListadoAlumnos();
+				String ssql = miModelo.getInformeFct();
 				table.setModel(miModelo.getTabla(ssql));
 			}
 		});

@@ -4,6 +4,9 @@ public class testApp {
 
 	public static void main(String[] args) throws SQLException {
 
+		/**
+		 * Inicilizamos todas la Interfaces y Clases.
+		 */
 		Controlador miControlador = new Controlador();
 		Modelo miModelo = new Modelo();
 
@@ -24,7 +27,13 @@ public class testApp {
 		Formulario miFormulario = new Formulario();
 		Nuevo_Usuario miNuevo_Usuario = new Nuevo_Usuario();
 		InformesGenerales miGenerales = new InformesGenerales();
+		InformeAseguradoras miAseguradora = new InformeAseguradoras();
+		InformesFCT miFCT = new InformesFCT();
 
+		/**
+		 * Aqui le marcamos al controlador todas las clases e interfaces que debe
+		 * conocer.
+		 */
 		miControlador.setMiModelo(miModelo);
 		miControlador.setMiInterfaz2(miInterfaz2);
 		miControlador.setMiInterfaz2_Director(miInterfaz2_Director);
@@ -43,7 +52,12 @@ public class testApp {
 		miControlador.setMiFormulario(miFormulario);
 		miControlador.setMiNuevo_Usuario(miNuevo_Usuario);
 		miControlador.setMiGenerales(miGenerales);
+		miControlador.setMiAseguradora(miAseguradora);
+		miControlador.setMiFCT(miFCT);
 
+		/**
+		 * Aqui le marcamos al modelo todas las clases e interfaces que debe conocer.
+		 */
 		miModelo.setMiInterfaz2(miInterfaz2);
 		miModelo.setMiInterfaz2_Director(miInterfaz2_Director);
 		miModelo.setMiInterfaz2_1(miInterfaz2_1);
@@ -60,9 +74,14 @@ public class testApp {
 		miModelo.setMiFormulario(miFormulario);
 		miModelo.setMiNuevo_Usuario(miNuevo_Usuario);
 		miModelo.setMiGenerales(miGenerales);
-
+		miModelo.setMiAseguradora(miAseguradora);
+		miModelo.setMiFCT(miFCT);
 		miModelo.setMiLogin(miLogin);
 
+		/**
+		 * Es aqui donde hacemos que las interfaces conozcan a modelo y a controlador
+		 * 
+		 */
 		miLogin.setMiControlador(miControlador);
 		miLogin.setMiModelo(miModelo);
 
@@ -110,9 +129,15 @@ public class testApp {
 
 		miInterfaz5_1_Director.setMiControlador(miControlador);
 		miInterfaz5_1_Director.setMiModelo(miModelo);
-		
+
 		miGenerales.setMiControlador(miControlador);
-		miGenerales.setMiModelo(miModelo);;
+		miGenerales.setMiModelo(miModelo);
+
+		miAseguradora.setMiControlador(miControlador);
+		miAseguradora.setMiModelo(miModelo);
+
+		miFCT.setMiControlador(miControlador);
+		miFCT.setMiModelo(miModelo);
 
 		miLogin.setVisible(true);
 	}
