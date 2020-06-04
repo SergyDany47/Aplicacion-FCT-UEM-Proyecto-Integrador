@@ -90,7 +90,8 @@ public class Interfaz_4 extends JFrame {
 		scrollPane.setViewportView(table);
 
 		txtEdad = new JTextField();
-		txtEdad.setBounds(533, 46, 85, 20);
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtEdad.setBounds(574, 46, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
 		txtEdad.setText("Nom. Emp. ");
@@ -107,10 +108,11 @@ public class Interfaz_4 extends JFrame {
 				miControlador.asignarPracticas();
 			}
 		});
-		btnGenerarAnexo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnGenerarAnexo.setFont(new Font("Arial", Font.PLAIN, 14));
 
 		txtNumExpediente = new JTextField();
-		txtNumExpediente.setBounds(95, 46, 87, 20);
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNumExpediente.setBounds(188, 46, 87, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
 		txtNumExpediente.setForeground(Color.BLACK);
@@ -122,7 +124,7 @@ public class Interfaz_4 extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(1073, 40, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter4T";
@@ -131,25 +133,28 @@ public class Interfaz_4 extends JFrame {
 		});
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(313, 46, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(380, 46, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
-		txtNombre.setText("Apellidos");
+		txtNombre.setText("Apell. Alum");
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(204, 46, 85, 20);
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtApellidos.setBounds(285, 46, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
-		txtApellidos.setText("Nom. Alum.");
+		txtApellidos.setText("Nom. Alum");
 		txtApellidos.setForeground(Color.BLACK);
 		txtApellidos.setColumns(10);
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
-		txtDNI.setBounds(426, 46, 85, 20);
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtDNI.setBounds(475, 46, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
 		txtDNI.setText("CIF Emp.");
@@ -158,7 +163,8 @@ public class Interfaz_4 extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 
 		txtNacionalidad = new JTextField();
-		txtNacionalidad.setBounds(646, 46, 85, 20);
+		txtNacionalidad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNacionalidad.setBounds(675, 46, 85, 20);
 		panel.add(txtNacionalidad);
 		txtNacionalidad.setToolTipText("");
 		txtNacionalidad.setText("Resp. Emp");
@@ -167,7 +173,7 @@ public class Interfaz_4 extends JFrame {
 		txtNacionalidad.setBackground(Color.WHITE);
 		
 		btnGuardarFichero = new JButton("Guardar Fichero");
-		btnGuardarFichero.setBounds(93, 544, 137, 23);
+		btnGuardarFichero.setBounds(93, 539, 137, 30);
 		panel.add(btnGuardarFichero);
 		btnGuardarFichero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -178,12 +184,13 @@ public class Interfaz_4 extends JFrame {
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
 		
 		txtExp = new JTextField();
+		txtExp.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtExp.setToolTipText("");
 		txtExp.setText("Expediente");
 		txtExp.setForeground(Color.BLACK);
 		txtExp.setColumns(10);
 		txtExp.setBackground(Color.WHITE);
-		txtExp.setBounds(758, 46, 85, 20);
+		txtExp.setBounds(93, 46, 85, 20);
 		panel.add(txtExp);
 
 		lblFondo = new JLabel("");
@@ -191,11 +198,11 @@ public class Interfaz_4 extends JFrame {
 		contentPane.add(lblFondo);
 		lblFondo.setIcon(new ImageIcon(Interfaz_4.class.getResource("/Imagenes/fondoBueno.jpg")));
 
-		lblTitulo = new JLabel("Listado de Practicas en Curso");
-		lblTitulo.setBounds(228, 11, 491, 39);
+		lblTitulo = new JLabel("Listado de Pr\u00E1cticas en Curso");
+		lblTitulo.setBounds(228, 11, 513, 39);
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 
 		btnAdmEmpresas = new JButton("Administrar Empresas");
 		btnAdmEmpresas.setBackground(SystemColor.info);
@@ -226,7 +233,7 @@ public class Interfaz_4 extends JFrame {
 				miControlador.cerrarSesion();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnNewButton.setBounds(10, 11, 117, 30);
 		contentPane.add(btnNewButton);
 	}

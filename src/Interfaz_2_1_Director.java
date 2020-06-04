@@ -93,15 +93,17 @@ public class Interfaz_2_1_Director extends JFrame {
 		});
 
 		txtEdad = new JTextField();
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtEdad.setBounds(503, 59, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Fecha.Nacimiento");
+		txtEdad.setText("Edad");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
 
 		txtNumExpediente = new JTextField();
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNumExpediente.setBounds(81, 59, 115, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
@@ -114,7 +116,7 @@ public class Interfaz_2_1_Director extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(803, 58, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter21D";
@@ -123,7 +125,8 @@ public class Interfaz_2_1_Director extends JFrame {
 		});
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(309, 59, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(216, 59, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
 		txtNombre.setText("Nombre");
@@ -132,7 +135,8 @@ public class Interfaz_2_1_Director extends JFrame {
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(208, 59, 85, 20);
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtApellidos.setBounds(311, 59, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
 		txtApellidos.setText("Apellidos");
@@ -141,6 +145,7 @@ public class Interfaz_2_1_Director extends JFrame {
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDNI.setBounds(406, 59, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
@@ -150,6 +155,7 @@ public class Interfaz_2_1_Director extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 
 		txtNacionalidad = new JTextField();
+		txtNacionalidad.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNacionalidad.setBounds(600, 59, 100, 20);
 		panel.add(txtNacionalidad);
 		txtNacionalidad.setToolTipText("");
@@ -159,35 +165,35 @@ public class Interfaz_2_1_Director extends JFrame {
 		txtNacionalidad.setBackground(Color.WHITE);
 
 		chckbxNewCheckBox = new JCheckBox("Anexo 1");
-		chckbxNewCheckBox.setBounds(944, 123, 128, 23);
+		chckbxNewCheckBox.setBounds(944, 123, 141, 23);
 		panel.add(chckbxNewCheckBox);
 
 		chckbxAnexo = new JCheckBox("Anexo 2.1");
-		chckbxAnexo.setBounds(944, 158, 128, 23);
+		chckbxAnexo.setBounds(944, 158, 141, 23);
 		panel.add(chckbxAnexo);
 
 		chckbxNewCheckBox_2 = new JCheckBox("Anexo 2.2");
-		chckbxNewCheckBox_2.setBounds(944, 193, 128, 23);
+		chckbxNewCheckBox_2.setBounds(944, 193, 141, 23);
 		panel.add(chckbxNewCheckBox_2);
 
 		chckbxNewCheckBox_3 = new JCheckBox("Anexo 3");
-		chckbxNewCheckBox_3.setBounds(944, 228, 128, 23);
+		chckbxNewCheckBox_3.setBounds(944, 228, 141, 23);
 		panel.add(chckbxNewCheckBox_3);
 
 		chckbxNewCheckBox_4 = new JCheckBox("Anexo 7");
-		chckbxNewCheckBox_4.setBounds(944, 263, 128, 23);
+		chckbxNewCheckBox_4.setBounds(944, 263, 141, 23);
 		panel.add(chckbxNewCheckBox_4);
 
 		chckbxNewCheckBox_5 = new JCheckBox("Anexo 8 ");
-		chckbxNewCheckBox_5.setBounds(944, 298, 128, 23);
+		chckbxNewCheckBox_5.setBounds(944, 298, 141, 23);
 		panel.add(chckbxNewCheckBox_5);
 
 		chckbxNewCheckBox_6 = new JCheckBox("Seleccionar Todos");
-		chckbxNewCheckBox_6.setBounds(944, 333, 151, 23);
+		chckbxNewCheckBox_6.setBounds(944, 333, 141, 23);
 		panel.add(chckbxNewCheckBox_6);
 
 		btnGenerar = new JButton("Generar");
-		btnGenerar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGenerar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnGenerar.setBackground(SystemColor.inactiveCaption);
 		btnGenerar.setBounds(944, 368, 100, 30);
 		panel.add(btnGenerar);
@@ -206,13 +212,13 @@ public class Interfaz_2_1_Director extends JFrame {
 				miControlador.listadoAlumnos();
 			}
 		});
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 
 		lblTitulo = new JLabel("Generar Anexos");
 		lblTitulo.setBounds(526, 11, 275, 39);
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 	}
 	public String [] getDatos(){
 		String [] datos = new String[6];

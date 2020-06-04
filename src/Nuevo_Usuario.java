@@ -122,7 +122,7 @@ public class Nuevo_Usuario extends JFrame {
 			}
 		});
 		btnAcceder.setFont(new Font("Arial", Font.PLAIN, 11));
-		btnAcceder.setBounds(144, 350, 82, 23);
+		btnAcceder.setBounds(205, 342, 82, 23);
 		panel_1.add(btnAcceder);
 
 		lblLogo = new JLabel("");
@@ -189,7 +189,7 @@ public class Nuevo_Usuario extends JFrame {
 		});
 		btnVolver.setVerticalAlignment(SwingConstants.TOP);
 		btnVolver.setFont(new Font("Arial", Font.PLAIN, 11));
-		btnVolver.setBounds(283, 350, 82, 23);
+		btnVolver.setBounds(89, 342, 82, 23);
 		panel_1.add(btnVolver);
 		
 		

@@ -88,7 +88,8 @@ public class Interfaz_3_Director extends JFrame {
 		});
 
 		txtEdad = new JTextField();
-		txtEdad.setBounds(542, 40, 85, 20);
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtEdad.setBounds(520, 40, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
 		txtEdad.setText("Responsable");
@@ -97,6 +98,7 @@ public class Interfaz_3_Director extends JFrame {
 		txtEdad.setBackground(Color.WHITE);
 
 		txtNumExpediente = new JTextField();
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNumExpediente.setBounds(93, 40, 87, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
@@ -109,7 +111,7 @@ public class Interfaz_3_Director extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(1073, 40, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter3D";
@@ -118,7 +120,7 @@ public class Interfaz_3_Director extends JFrame {
 		});
 
 		btnGuardarFichero = new JButton("Guardar Fichero");
-		btnGuardarFichero.setBounds(93, 544, 128, 23);
+		btnGuardarFichero.setBounds(93, 536, 128, 30);
 		panel.add(btnGuardarFichero);
 		btnGuardarFichero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +131,8 @@ public class Interfaz_3_Director extends JFrame {
 		btnGuardarFichero.setBackground(SystemColor.info);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(315, 40, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(414, 40, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
 		txtNombre.setText("Tel\u00E9fono");
@@ -138,6 +141,7 @@ public class Interfaz_3_Director extends JFrame {
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtApellidos.setBounds(202, 40, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
@@ -147,7 +151,8 @@ public class Interfaz_3_Director extends JFrame {
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
-		txtDNI.setBounds(427, 40, 85, 20);
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtDNI.setBounds(627, 40, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
 		txtDNI.setText("Localidad");
@@ -156,12 +161,13 @@ public class Interfaz_3_Director extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 		
 		txtDireccion = new JTextField();
+		txtDireccion.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDireccion.setToolTipText("");
 		txtDireccion.setText("Direccion");
 		txtDireccion.setForeground(Color.BLACK);
 		txtDireccion.setColumns(10);
 		txtDireccion.setBackground(Color.WHITE);
-		txtDireccion.setBounds(651, 40, 85, 20);
+		txtDireccion.setBounds(307, 40, 85, 20);
 		panel.add(txtDireccion);
 
 		lblFondo = new JLabel("");
@@ -173,7 +179,7 @@ public class Interfaz_3_Director extends JFrame {
 		lblTitulo.setBounds(245, 11, 383, 39);
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 
 		btnListEmpresas = new JButton("Listado Prácticas");
 		btnListEmpresas.addActionListener(new ActionListener() {
@@ -204,7 +210,7 @@ public class Interfaz_3_Director extends JFrame {
 				miControlador.cerrarSesionDirector();
 			}
 		});
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnAtras.setBounds(10, 11, 117, 30);
 		contentPane.add(btnAtras);
 		

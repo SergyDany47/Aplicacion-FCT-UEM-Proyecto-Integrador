@@ -138,6 +138,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		scrollPane.setViewportView(tablaListaTutor);
 
 		txtDNItutor_1 = new JTextField();
+		txtDNItutor_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDNItutor_1.setBounds(23, 59, 115, 20);
 		panel.add(txtDNItutor_1);
 		txtDNItutor_1.setBackground(Color.WHITE);
@@ -150,7 +151,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(747, 53, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter51D";
@@ -159,6 +160,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		});
 
 		txtApellido_1 = new JTextField();
+		txtApellido_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtApellido_1.setBounds(243, 59, 85, 20);
 		panel.add(txtApellido_1);
 		txtApellido_1.setToolTipText("");
@@ -168,6 +170,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtApellido_1.setBackground(Color.WHITE);
 
 		txtANombre1 = new JTextField();
+		txtANombre1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtANombre1.setBounds(148, 59, 85, 20);
 		panel.add(txtANombre1);
 		txtANombre1.setToolTipText("");
@@ -177,6 +180,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtANombre1.setBackground(Color.WHITE);
 
 		txtCodCentro_1 = new JTextField();
+		txtCodCentro_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtCodCentro_1.setText("Código centro");
 		txtCodCentro_1.setBounds(338, 59, 85, 20);
 		panel.add(txtCodCentro_1);
@@ -198,6 +202,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		panel_1_1.add(lblEdicionAlumnos);
 
 		txtDniTutor = new JTextField();
+		txtDniTutor.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDniTutor.setBounds(38, 126, 182, 20);
 		panel_1_1.add(txtDniTutor);
 		txtDniTutor.setToolTipText("");
@@ -207,7 +212,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtDniTutor.setBackground(Color.WHITE);
 
 		btnModificar = new JButton("Modificar");
-		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnModificar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnModificar.setBackground(SystemColor.inactiveCaption);
 		btnModificar.setBounds(137, 364, 100, 30);
 		btnModificar.addActionListener(new ActionListener() {
@@ -243,7 +248,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		panel_1_1.add(btnModificar);
 
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBorrar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnBorrar.setBackground(SystemColor.inactiveCaption);
 		btnBorrar.setBounds(27, 364, 100, 30);
 		panel_1_1.add(btnBorrar);
@@ -271,6 +276,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		});
 
 		txtNombre_1 = new JTextField();
+		txtNombre_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNombre_1.setBounds(38, 156, 182, 20);
 		panel_1_1.add(txtNombre_1);
 		txtNombre_1.setToolTipText("");
@@ -280,6 +286,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtNombre_1.setBackground(Color.WHITE);
 
 		txtApellidos_1 = new JTextField();
+		txtApellidos_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtApellidos_1.setBounds(38, 187, 182, 20);
 		panel_1_1.add(txtApellidos_1);
 		txtApellidos_1.setToolTipText("");
@@ -289,6 +296,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtApellidos_1.setBackground(Color.WHITE);
 
 		textCodCentro1 = new JTextField();
+		textCodCentro1.setFont(new Font("Arial", Font.PLAIN, 10));
 		textCodCentro1.setBounds(38, 218, 182, 20);
 		panel_1_1.add(textCodCentro1);
 		textCodCentro1.setToolTipText("");
@@ -322,7 +330,7 @@ public class Interfaz_5_1_Director extends JFrame {
 			}
 		});
 		panel_1_1.add(btnGuardar);
-		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGuardar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnGuardar.setBackground(SystemColor.inactiveCaption);
 
 		lblFondo = new JLabel("");
@@ -339,13 +347,13 @@ public class Interfaz_5_1_Director extends JFrame {
 				miControlador.listadoTutores();
 			}
 		});
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 
 		lblTitulo = new JLabel("Añadir / Modificar Tutores");
 		lblTitulo.setBounds(423, 11, 493, 39);
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 	}
 
 	private void limpiarCampos() {

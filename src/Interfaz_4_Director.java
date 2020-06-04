@@ -89,7 +89,8 @@ public class Interfaz_4_Director extends JFrame {
 		scrollPane.setViewportView(table);
 
 		txtEdad = new JTextField();
-		txtEdad.setBounds(533, 46, 85, 20);
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtEdad.setBounds(650, 46, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
 		txtEdad.setText("Nom. Emp.");
@@ -98,7 +99,8 @@ public class Interfaz_4_Director extends JFrame {
 		txtEdad.setBackground(Color.WHITE);
 
 		txtNumExpediente = new JTextField();
-		txtNumExpediente.setBounds(95, 46, 87, 20);
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNumExpediente.setBounds(204, 46, 87, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
 		txtNumExpediente.setForeground(Color.BLACK);
@@ -110,7 +112,7 @@ public class Interfaz_4_Director extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(1073, 40, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter4D";
@@ -119,7 +121,7 @@ public class Interfaz_4_Director extends JFrame {
 		});
 		
 		btnGuardarFichero = new JButton("Guardar Fichero");
-		btnGuardarFichero.setBounds(93, 544, 128, 23);
+		btnGuardarFichero.setBounds(93, 539, 128, 30);
 		panel.add(btnGuardarFichero);
 		btnGuardarFichero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,25 +132,28 @@ public class Interfaz_4_Director extends JFrame {
 		btnGuardarFichero.setBackground(SystemColor.info);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(313, 46, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(428, 46, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
-		txtNombre.setText("Apellidos");
+		txtNombre.setText("Apell. Alum");
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(204, 46, 85, 20);
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtApellidos.setBounds(317, 46, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
-		txtApellidos.setText("Nom. Alum.");
+		txtApellidos.setText("Nom. Alum");
 		txtApellidos.setForeground(Color.BLACK);
 		txtApellidos.setColumns(10);
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
-		txtDNI.setBounds(426, 46, 85, 20);
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtDNI.setBounds(538, 46, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
 		txtDNI.setText("CIF Emp.");
@@ -157,7 +162,8 @@ public class Interfaz_4_Director extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 
 		txtNacionalidad = new JTextField();
-		txtNacionalidad.setBounds(646, 46, 85, 20);
+		txtNacionalidad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNacionalidad.setBounds(754, 46, 85, 20);
 		panel.add(txtNacionalidad);
 		txtNacionalidad.setToolTipText("");
 		txtNacionalidad.setText("Resp. Emp");
@@ -166,12 +172,13 @@ public class Interfaz_4_Director extends JFrame {
 		txtNacionalidad.setBackground(Color.WHITE);
 		
 		txtExp = new JTextField();
+		txtExp.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtExp.setToolTipText("");
 		txtExp.setText("Expediente");
 		txtExp.setForeground(Color.BLACK);
 		txtExp.setColumns(10);
 		txtExp.setBackground(Color.WHITE);
-		txtExp.setBounds(758, 46, 85, 20);
+		txtExp.setBounds(93, 46, 85, 20);
 		panel.add(txtExp);
 
 		lblFondo = new JLabel("");
@@ -180,10 +187,10 @@ public class Interfaz_4_Director extends JFrame {
 		lblFondo.setIcon(new ImageIcon(Interfaz_4.class.getResource("/Imagenes/fondoBueno.jpg")));
 
 		lblTitulo = new JLabel("Listado de Practicas en Curso");
-		lblTitulo.setBounds(176, 11, 491, 39);
+		lblTitulo.setBounds(151, 11, 516, 39);
 		btnListTutores.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 
 		btnListEmpresas = new JButton("Listado Empresas");
 		btnListEmpresas.setBackground(SystemColor.info);
@@ -214,7 +221,7 @@ public class Interfaz_4_Director extends JFrame {
 				miControlador.cerrarSesionDirector();
 			}
 		});
-		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCerrarSesion.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCerrarSesion.setBounds(10, 11, 117, 30);
 		btnListTutores.add(btnCerrarSesion);
 
