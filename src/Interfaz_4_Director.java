@@ -180,6 +180,12 @@ public class Interfaz_4_Director extends JFrame {
 		txtExp.setBackground(Color.WHITE);
 		txtExp.setBounds(93, 46, 85, 20);
 		panel.add(txtExp);
+		
+		JButton btnDatosHistoricos = new JButton("Datos Historicos");
+		btnDatosHistoricos.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnDatosHistoricos.setBackground(SystemColor.info);
+		btnDatosHistoricos.setBounds(1045, 539, 128, 30);
+		panel.add(btnDatosHistoricos);
 
 		lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 87, 1275, 594);
