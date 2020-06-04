@@ -214,7 +214,7 @@ public class Interfaz_2_1 extends JFrame {
 		txtEdad.setBounds(403, 59, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Edad");
+		txtEdad.setText("Fecha.Nacimiento");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);

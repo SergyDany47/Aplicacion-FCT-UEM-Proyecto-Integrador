@@ -94,7 +94,7 @@ public class Interfaz_4 extends JFrame {
 		txtEdad.setBounds(574, 46, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Nom. Emp. ");
+		txtEdad.setText("Nom. Emp.");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
@@ -116,7 +116,7 @@ public class Interfaz_4 extends JFrame {
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
 		txtNumExpediente.setForeground(Color.BLACK);
-		txtNumExpediente.setText("DNI ");
+		txtNumExpediente.setText("DNI");
 		txtNumExpediente.setToolTipText("");
 		txtNumExpediente.setColumns(10);
 
@@ -137,7 +137,7 @@ public class Interfaz_4 extends JFrame {
 		txtNombre.setBounds(380, 46, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
-		txtNombre.setText("Apell. Alum");
+		txtNombre.setText("Apellidos");
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(Color.WHITE);
@@ -147,7 +147,7 @@ public class Interfaz_4 extends JFrame {
 		txtApellidos.setBounds(285, 46, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
-		txtApellidos.setText("Nom. Alum");
+		txtApellidos.setText("Nom. Alum.");
 		txtApellidos.setForeground(Color.BLACK);
 		txtApellidos.setColumns(10);
 		txtApellidos.setBackground(Color.WHITE);
