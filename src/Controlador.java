@@ -15,6 +15,7 @@ public class Controlador {
 	private Interfaz_5_Director miInterfaz5_Director;
 	private Interfaz_5_1_Director miInterfaz5_1_Director;
 	private Formulario miFormulario;
+	private InformesGenerales miGenerales;
 
 	private Modelo miModelo;
 
@@ -84,6 +85,10 @@ public class Controlador {
 
 	public void setMiModelo(Modelo miModelo) {
 		this.miModelo = miModelo;
+	}
+	
+	public void setMiGenerales(InformesGenerales miGenerales) {
+		this.miGenerales = miGenerales;
 	}
 
 	public void abrirFormulario() {
@@ -165,6 +170,7 @@ public class Controlador {
 		miInterfaz4_Director.setVisible(false);
 		miInterfaz3_Director.setVisible(false);
 		miInterfaz5_Director.setVisible(false);
+		miGenerales.setVisible(false);
 	}
 
 	public void adminPracticas() {
@@ -210,6 +216,12 @@ public class Controlador {
 	public void asignarPracticas() {
 		miInterfaz4_1.setVisible(true);
 		miInterfaz4.setVisible(false);
+	}
+	
+	public void informesGenerales() {
+		miGenerales.setVisible(true);
+		miInterfaz2_Director.setVisible(false);
+		
 	}
 
 	public void login() {
