@@ -47,6 +47,7 @@ public class Interfaz_2_Director extends JFrame {
 	private JPanel panel_1;
 	private JButton btnListTutores;
 	private JButton btnGuardarFichero;
+	private JButton btnInformesGenerales;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -246,6 +247,17 @@ public class Interfaz_2_Director extends JFrame {
 		btnListTutores.setBackground(SystemColor.info);
 		btnListTutores.setBounds(693, 11, 180, 30);
 		contentPane.add(btnListTutores);
+		
+		btnInformesGenerales = new JButton("Informes Generales");
+		btnInformesGenerales.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnInformesGenerales.setBackground(SystemColor.info);
+		btnInformesGenerales.setBounds(693, 52, 180, 30);
+		contentPane.add(btnInformesGenerales);
+		btnInformesGenerales.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miControlador.informesGenerales();
+			}
+		});
 	}
 
 	public String[] getDatos() {

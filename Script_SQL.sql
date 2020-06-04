@@ -128,50 +128,51 @@ CREATE TABLE registra (
    
 );
 ALTER TABLE registra ADD CONSTRAINT registra_pk PRIMARY KEY ( usr,dni_tutor );
+ 
 
 ALTER TABLE colabora
     ADD CONSTRAINT colabora_centro_fk FOREIGN KEY ( centro_cod_centro )
-        REFERENCES centro ( cod_centro );
+        REFERENCES centro ( cod_centro ) ON UPDATE CASCADE;
 
 ALTER TABLE colabora
     ADD CONSTRAINT colabora_empresa_fk FOREIGN KEY ( empresa_cif )
-        REFERENCES empresa ( cif ) ON DELETE CASCADE;
+        REFERENCES empresa ( cif ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE gestiona
     ADD CONSTRAINT gestiona_grupo_fk FOREIGN KEY ( grupo_cod_grupo )
-        REFERENCES grupo ( cod_grupo );
+        REFERENCES grupo ( cod_grupo ) ON UPDATE CASCADE;
 
 ALTER TABLE gestiona
     ADD CONSTRAINT gestiona_tutor_fk FOREIGN KEY ( tutor_dni_tutor )
-        REFERENCES tutor ( dni_tutor ) ON DELETE CASCADE;
+        REFERENCES tutor ( dni_tutor ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE pertenece
     ADD CONSTRAINT pertenece_alumno_fk FOREIGN KEY ( alumno_num_exp )
-        REFERENCES alumno ( num_exp ) ON DELETE CASCADE;
+        REFERENCES alumno ( num_exp ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE pertenece
     ADD CONSTRAINT pertenece_grupo_fk FOREIGN KEY ( grupo_cod_grupo )
-        REFERENCES grupo ( cod_grupo );
+        REFERENCES grupo ( cod_grupo ) ON UPDATE CASCADE;
 
 ALTER TABLE practica
     ADD CONSTRAINT relation_8_alumno_fk FOREIGN KEY ( alumno_num_exp )
-        REFERENCES alumno ( num_exp ) ON DELETE CASCADE;
+        REFERENCES alumno ( num_exp ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE practica
     ADD CONSTRAINT relation_8_empresa_fk FOREIGN KEY ( empresa_cif )
-        REFERENCES empresa ( cif ) ON DELETE CASCADE;
+        REFERENCES empresa ( cif ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE tutor
     ADD CONSTRAINT tutor_centro_fk FOREIGN KEY ( centro_cod_centro )
-        REFERENCES centro ( cod_centro );
+        REFERENCES centro ( cod_centro ) ON UPDATE CASCADE;
         
 ALTER TABLE registra
     ADD CONSTRAINT registra_tutor_fk FOREIGN KEY (dni_tutor)
-        REFERENCES tutor ( dni_tutor ) ON DELETE CASCADE;
+        REFERENCES tutor ( dni_tutor ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE registra
     ADD CONSTRAINT registra_users_fk FOREIGN KEY ( usr )
-        REFERENCES users ( usr );
+        REFERENCES users ( usr ) ON UPDATE CASCADE;
         
 
         

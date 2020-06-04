@@ -23,6 +23,7 @@ public class testApp {
 		Interfaz_5_1_Director miInterfaz5_1_Director = new Interfaz_5_1_Director();
 		Formulario miFormulario = new Formulario();
 		Nuevo_Usuario miNuevo_Usuario = new Nuevo_Usuario();
+		InformesGenerales miGenerales = new InformesGenerales();
 
 		miControlador.setMiModelo(miModelo);
 		miControlador.setMiInterfaz2(miInterfaz2);
@@ -41,6 +42,7 @@ public class testApp {
 		miControlador.setMiLogin(miLogin);
 		miControlador.setMiFormulario(miFormulario);
 		miControlador.setMiNuevo_Usuario(miNuevo_Usuario);
+		miControlador.setMiGenerales(miGenerales);
 
 		miModelo.setMiInterfaz2(miInterfaz2);
 		miModelo.setMiInterfaz2_Director(miInterfaz2_Director);
@@ -57,6 +59,7 @@ public class testApp {
 		miModelo.setMiInterfaz5_1_Director(miInterfaz5_1_Director);
 		miModelo.setMiFormulario(miFormulario);
 		miModelo.setMiNuevo_Usuario(miNuevo_Usuario);
+		miModelo.setMiGenerales(miGenerales);
 
 		miModelo.setMiLogin(miLogin);
 
@@ -107,6 +110,9 @@ public class testApp {
 
 		miInterfaz5_1_Director.setMiControlador(miControlador);
 		miInterfaz5_1_Director.setMiModelo(miModelo);
+		
+		miGenerales.setMiControlador(miControlador);
+		miGenerales.setMiModelo(miModelo);;
 
 		miLogin.setVisible(true);
 	}
