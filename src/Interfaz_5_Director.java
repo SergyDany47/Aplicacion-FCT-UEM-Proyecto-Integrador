@@ -121,7 +121,7 @@ public class Interfaz_5_Director extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter5D";
-				miControlador.filtrarLisTut(getDatos(),inter);
+				miControlador.filtrarLisTut(getDatos(), inter);
 			}
 		});
 
@@ -135,7 +135,7 @@ public class Interfaz_5_Director extends JFrame {
 		});
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnGuardarFichero.setBackground(SystemColor.info);
-		
+
 		txtApellidos = new JTextField();
 		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtApellidos.setBounds(309, 37, 85, 20);
@@ -221,12 +221,13 @@ public class Interfaz_5_Director extends JFrame {
 		btnListAlumnos.setBounds(698, 11, 180, 30);
 		contentPane.add(btnListAlumnos);
 	}
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtDNITutor.getText();
-		datos[1]=txtNombre_1.getText();
-		datos[2]=txtApellidos.getText();
-		datos[3]=txtCodigoCentro.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtDNITutor.getText();
+		datos[1] = txtNombre_1.getText();
+		datos[2] = txtApellidos.getText();
+		datos[3] = txtCodigoCentro.getText();
 		return datos;
 	}
 

@@ -635,7 +635,6 @@ public class Modelo {
 			// la interfaz que sea
 			if (inter.equals("inter4T")) {
 				miInterfaz4.generaFiltro(getTabla(listadoPracticas + " where" + where));
-				System.out.println(where);
 			}
 			if (inter.equals("inter4D")) {
 				miInterfaz4_Director.generaFiltro(getTabla(listadoPracticas + " where" + where));

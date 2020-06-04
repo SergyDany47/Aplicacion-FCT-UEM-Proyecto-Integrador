@@ -42,7 +42,6 @@ public class Nuevo_Usuario extends JFrame {
 	private JButton btnVolver;
 	private JRadioButton rdbtnTutor;
 	private JRadioButton rdbtnDirector;
-	
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -51,7 +50,7 @@ public class Nuevo_Usuario extends JFrame {
 	public void setMiModelo(Modelo miModelo) {
 		this.miModelo = miModelo;
 	}
-	
+
 	public String getEmail() {
 		String email = txtEmail.getText();
 		return email;
@@ -66,16 +65,15 @@ public class Nuevo_Usuario extends JFrame {
 		String pwd = String.valueOf(passwordField.getPassword());
 		if (String.valueOf(passwordField.getPassword()).equals(String.valueOf(passwordField_1.getPassword()))) {
 			return pwd;
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
+
 	public String getRol() {
 		if (rdbtnTutor.isSelected()) {
 			return "tutor";
-		}
-		else if (rdbtnDirector.isSelected()) {
+		} else if (rdbtnDirector.isSelected()) {
 			return "director";
 		}
 		return null;
@@ -129,42 +127,42 @@ public class Nuevo_Usuario extends JFrame {
 		lblLogo.setIcon(new ImageIcon(LogIn.class.getResource("/Imagenes/LogUem.png")));
 		lblLogo.setBounds(54, 10, 299, 68);
 		panel_1.add(lblLogo);
-		
+
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
 		txtEmail.setBackground(Color.WHITE);
 		txtEmail.setBounds(74, 179, 226, 20);
 		panel_1.add(txtEmail);
-		
+
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setBackground(Color.WHITE);
 		passwordField_1.setBounds(74, 287, 226, 20);
 		panel_1.add(passwordField_1);
-		
+
 		JLabel lblContrasena_1 = new JLabel("Repetir Contrase\u00F1a ");
 		lblContrasena_1.setForeground(Color.WHITE);
 		lblContrasena_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblContrasena_1.setBounds(74, 263, 152, 14);
 		panel_1.add(lblContrasena_1);
-		
+
 		lblContrasena = new JLabel("Contrase\u00F1a");
 		lblContrasena.setForeground(Color.WHITE);
 		lblContrasena.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblContrasena.setBounds(74, 209, 97, 14);
 		panel_1.add(lblContrasena);
-		
+
 		lblApellidos = new JLabel("Email");
 		lblApellidos.setForeground(Color.WHITE);
 		lblApellidos.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblApellidos.setBounds(74, 155, 97, 14);
 		panel_1.add(lblApellidos);
-		
+
 		lblContrasena_3 = new JLabel("Usuario");
 		lblContrasena_3.setForeground(Color.WHITE);
 		lblContrasena_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblContrasena_3.setBounds(74, 101, 97, 14);
 		panel_1.add(lblContrasena_3);
-		
+
 		rdbtnTutor = new JRadioButton("Tutor");
 		rdbtnTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnTutor.setForeground(Color.WHITE);
@@ -172,7 +170,7 @@ public class Nuevo_Usuario extends JFrame {
 		buttonGroup.add(rdbtnTutor);
 		rdbtnTutor.setBounds(109, 313, 61, 23);
 		panel_1.add(rdbtnTutor);
-		
+
 		rdbtnDirector = new JRadioButton("Director");
 		rdbtnDirector.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnDirector.setForeground(Color.WHITE);
@@ -180,7 +178,7 @@ public class Nuevo_Usuario extends JFrame {
 		buttonGroup.add(rdbtnDirector);
 		rdbtnDirector.setBounds(181, 313, 68, 23);
 		panel_1.add(rdbtnDirector);
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -191,8 +189,6 @@ public class Nuevo_Usuario extends JFrame {
 		btnVolver.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnVolver.setBounds(89, 342, 82, 23);
 		panel_1.add(btnVolver);
-		
-		
 
 		lblFondoCuadro = new JLabel("");
 		lblFondoCuadro.setIcon(new ImageIcon(LogIn.class.getResource("/Imagenes/universidad-europea.jpg")));
@@ -211,4 +207,3 @@ public class Nuevo_Usuario extends JFrame {
 		miControlador.cerrarSesion();
 	}
 }
-

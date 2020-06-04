@@ -142,7 +142,7 @@ public class Interfaz_2_1 extends JFrame {
 		setBounds(100, 100, 1280, 720);
 		setTitle("Interfaz 2.1: Añadir / Modificar Alumnos");
 		contentPane = new JPanel();
-		
+
 		/**
 		 * Deseleccionar filas y limpiar campos
 		 */
@@ -174,11 +174,12 @@ public class Interfaz_2_1 extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 103, 822, 450);
 		panel.add(scrollPane);
-		
+
 		table = new JTable();
-		
+
 		/**
-		 * permite utilizar las flechas de teclado para navegar en la tabla (Se le antojó al Iván)
+		 * permite utilizar las flechas de teclado para navegar en la tabla (Se le
+		 * antojó al Iván)
 		 */
 		table.addKeyListener(new KeyAdapter() {
 			@Override
@@ -188,9 +189,9 @@ public class Interfaz_2_1 extends JFrame {
 		});
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
-		
+
 		/**
-		 * Conseguir sql Listado de alumnos 
+		 * Conseguir sql Listado de alumnos
 		 */
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent e) {
@@ -198,9 +199,9 @@ public class Interfaz_2_1 extends JFrame {
 				table.setModel(miModelo.getTabla(ssql));
 			}
 		});
-		
+
 		/**
-		 * Actualiza los TextField 
+		 * Actualiza los TextField
 		 */
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -237,7 +238,7 @@ public class Interfaz_2_1 extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter21T";
-				miControlador.filtrarLisAlum(getDatos(),inter);
+				miControlador.filtrarLisAlum(getDatos(), inter);
 			}
 		});
 
@@ -355,7 +356,7 @@ public class Interfaz_2_1 extends JFrame {
 
 		btnGuardar = new JButton("Insertar");
 		btnGuardar.setBounds(250, 352, 100, 30);
-		
+
 		/**
 		 * Alert Guardar
 		 * 
@@ -393,7 +394,7 @@ public class Interfaz_2_1 extends JFrame {
 		btnModificar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnModificar.setBackground(SystemColor.inactiveCaption);
 		btnModificar.setBounds(140, 352, 100, 30);
-		
+
 		/**
 		 * Alert Modificar
 		 * 
@@ -435,7 +436,7 @@ public class Interfaz_2_1 extends JFrame {
 		btnBorrar.setBackground(SystemColor.inactiveCaption);
 		btnBorrar.setBounds(30, 352, 100, 30);
 		panel_1_1.add(btnBorrar);
-		
+
 		/**
 		 * Alert Borrar
 		 * 
@@ -487,6 +488,7 @@ public class Interfaz_2_1 extends JFrame {
 		lblTitulo.setForeground(new Color(153, 0, 51));
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
 	}
+
 	/**
 	 * Limpia los campos
 	 */
@@ -499,7 +501,7 @@ public class Interfaz_2_1 extends JFrame {
 		textField_5.setText("Nacionalidad");
 
 	}
-	
+
 	/**
 	 * Permite modificar la fila obteniendo el DNI antiguo(Primary Key)
 	 * 
@@ -510,8 +512,7 @@ public class Interfaz_2_1 extends JFrame {
 		String dniOld = (String) table.getValueAt(fila, 3);
 		return dniOld;
 	}
-	
-	
+
 	/**
 	 * Rellena los textField
 	 */
@@ -534,15 +535,15 @@ public class Interfaz_2_1 extends JFrame {
 		txtFechaNacimiento.setText(Fec_naci);
 		textField_5.setText((String) table.getValueAt(fila, 5));
 	}
-	
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtNumExpediente.getText();
-		datos[1]=txtApellidos.getText();
-		datos[2]=txtNombre.getText();
-		datos[3]=txtDNI.getText();
-		datos[4]=txtEdad.getText();
-		datos[5]=txtNacionalidad.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtNumExpediente.getText();
+		datos[1] = txtApellidos.getText();
+		datos[2] = txtNombre.getText();
+		datos[3] = txtDNI.getText();
+		datos[4] = txtEdad.getText();
+		datos[5] = txtNacionalidad.getText();
 		return datos;
 	}
 

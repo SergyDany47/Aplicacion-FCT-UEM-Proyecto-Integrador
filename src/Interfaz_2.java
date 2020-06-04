@@ -142,7 +142,7 @@ public class Interfaz_2 extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter2T";
-				miControlador.filtrarLisAlum(getDatos(),inter);
+				miControlador.filtrarLisAlum(getDatos(), inter);
 			}
 		});
 
@@ -185,7 +185,7 @@ public class Interfaz_2 extends JFrame {
 		txtNacionalidad.setForeground(Color.BLACK);
 		txtNacionalidad.setColumns(10);
 		txtNacionalidad.setBackground(Color.WHITE);
-		
+
 		btnGuardarFichero = new JButton("Guardar Fichero");
 		btnGuardarFichero.setBounds(93, 544, 128, 30);
 		panel.add(btnGuardarFichero);
@@ -241,14 +241,15 @@ public class Interfaz_2 extends JFrame {
 		contentPane.add(btnAsigPractica);
 		btnAsigPractica.setFont(new Font("Arial", Font.PLAIN, 14));
 	}
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtNumExpediente.getText();
-		datos[1]=txtApellidos.getText();
-		datos[2]=txtNombre.getText();
-		datos[3]=txtDNI.getText();
-		datos[4]=txtEdad.getText();
-		datos[5]=txtNacionalidad.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtNumExpediente.getText();
+		datos[1] = txtApellidos.getText();
+		datos[2] = txtNombre.getText();
+		datos[3] = txtDNI.getText();
+		datos[4] = txtEdad.getText();
+		datos[5] = txtNacionalidad.getText();
 		return datos;
 	}
 

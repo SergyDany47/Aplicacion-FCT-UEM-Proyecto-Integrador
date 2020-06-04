@@ -155,7 +155,7 @@ public class Interfaz_5_1_Director extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter51D";
-				miControlador.filtrarLisTut(getDatos(),inter);
+				miControlador.filtrarLisTut(getDatos(), inter);
 			}
 		});
 
@@ -383,12 +383,13 @@ public class Interfaz_5_1_Director extends JFrame {
 		txtApellido_1.setText((String) tablaListaTutor.getValueAt(fila, 2));
 		txtCodCentro_1.setText((String) tablaListaTutor.getValueAt(fila, 3));
 	}
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtDNItutor_1.getText();
-		datos[1]=txtANombre1.getText();
-		datos[2]=txtApellido_1.getText();
-		datos[3]=txtCodCentro_1.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtDNItutor_1.getText();
+		datos[1] = txtANombre1.getText();
+		datos[2] = txtApellido_1.getText();
+		datos[3] = txtCodCentro_1.getText();
 		return datos;
 	}
 

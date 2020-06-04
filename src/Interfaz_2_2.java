@@ -120,7 +120,7 @@ public class Interfaz_2_2 extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter22T";
-				miControlador.filtrarLisAlum(getDatos(),inter);
+				miControlador.filtrarLisAlum(getDatos(), inter);
 			}
 		});
 
@@ -227,15 +227,15 @@ public class Interfaz_2_2 extends JFrame {
 		lblTitulo.setForeground(new Color(153, 0, 51));
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
 	}
-	
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtNumExpediente.getText();
-		datos[1]=txtApellidos.getText();
-		datos[2]=txtNombre.getText();
-		datos[3]=txtDNI.getText();
-		datos[4]=txtEdad.getText();
-		datos[5]=txtNacionalidad.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtNumExpediente.getText();
+		datos[1] = txtApellidos.getText();
+		datos[2] = txtNombre.getText();
+		datos[3] = txtDNI.getText();
+		datos[4] = txtEdad.getText();
+		datos[5] = txtNacionalidad.getText();
 		return datos;
 	}
 

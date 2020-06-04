@@ -128,7 +128,7 @@ public class Interfaz_4 extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter4T";
-				miControlador.filtrarLisPra(getDatos(),inter);
+				miControlador.filtrarLisPra(getDatos(), inter);
 			}
 		});
 
@@ -171,7 +171,7 @@ public class Interfaz_4 extends JFrame {
 		txtNacionalidad.setForeground(Color.BLACK);
 		txtNacionalidad.setColumns(10);
 		txtNacionalidad.setBackground(Color.WHITE);
-		
+
 		btnGuardarFichero = new JButton("Guardar Fichero");
 		btnGuardarFichero.setBounds(93, 539, 137, 30);
 		panel.add(btnGuardarFichero);
@@ -182,7 +182,7 @@ public class Interfaz_4 extends JFrame {
 		});
 		btnGuardarFichero.setBackground(SystemColor.info);
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
-		
+
 		txtExp = new JTextField();
 		txtExp.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtExp.setToolTipText("");
@@ -237,15 +237,16 @@ public class Interfaz_4 extends JFrame {
 		btnNewButton.setBounds(10, 11, 117, 30);
 		contentPane.add(btnNewButton);
 	}
-	public String [] getDatos(){
-		String [] datos = new String[7];
-		datos[0]=txtNumExpediente.getText(); //DNI
-		datos[1]=txtApellidos.getText(); //nomb
-		datos[2]=txtNombre.getText();//Apell
-		datos[3]=txtDNI.getText(); //CIF
-		datos[4]=txtEdad.getText(); //nom emp
-		datos[5]=txtExp.getText();
-		datos[6]=txtNacionalidad.getText(); //resp_esp
+
+	public String[] getDatos() {
+		String[] datos = new String[7];
+		datos[0] = txtNumExpediente.getText(); // DNI
+		datos[1] = txtApellidos.getText(); // nomb
+		datos[2] = txtNombre.getText();// Apell
+		datos[3] = txtDNI.getText(); // CIF
+		datos[4] = txtEdad.getText(); // nom emp
+		datos[5] = txtExp.getText();
+		datos[6] = txtNacionalidad.getText(); // resp_esp
 		return datos;
 	}
 

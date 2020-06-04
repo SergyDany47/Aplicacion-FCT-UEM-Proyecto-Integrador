@@ -74,7 +74,7 @@ public class Interfaz_4_1 extends JFrame {
 		setBounds(100, 100, 1280, 720);
 		setTitle("Interfaz 4.1: Asignar Practicas");
 		contentPane = new JPanel();
-		
+
 		/**
 		 * Deseleccionar filas
 		 */
@@ -99,7 +99,7 @@ public class Interfaz_4_1 extends JFrame {
 		panel_1.setLayout(null);
 
 		panel = new JPanel();
-		
+
 		/**
 		 * Deseleccionar filas
 		 */

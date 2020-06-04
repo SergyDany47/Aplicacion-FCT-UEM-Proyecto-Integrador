@@ -22,7 +22,7 @@ public class testApp {
 		Interfaz_5_Director miInterfaz5_Director = new Interfaz_5_Director();
 		Interfaz_5_1_Director miInterfaz5_1_Director = new Interfaz_5_1_Director();
 		Formulario miFormulario = new Formulario();
-		Nuevo_Usuario miNuevo_Usuario= new Nuevo_Usuario();
+		Nuevo_Usuario miNuevo_Usuario = new Nuevo_Usuario();
 
 		miControlador.setMiModelo(miModelo);
 		miControlador.setMiInterfaz2(miInterfaz2);
@@ -65,7 +65,7 @@ public class testApp {
 
 		miFormulario.setMiControlador(miControlador);
 		miFormulario.setMiModelo(miModelo);
-		
+
 		miNuevo_Usuario.setMiControlador(miControlador);
 		miNuevo_Usuario.setMiModelo(miModelo);
 

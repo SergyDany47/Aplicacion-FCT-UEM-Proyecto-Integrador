@@ -178,7 +178,7 @@ public class Interfaz_3_1 extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter31T";
-				miControlador.filtrarLisEmpr(getDatos(),inter);
+				miControlador.filtrarLisEmpr(getDatos(), inter);
 			}
 		});
 
@@ -373,7 +373,7 @@ public class Interfaz_3_1 extends JFrame {
 		txtDireccion.setBounds(56, 116, 182, 20);
 		panel_1_1.add(txtDireccion);
 		txtDireccion.setColumns(10);
-		
+
 		txtDireccion1 = new JTextField();
 		txtDireccion1.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDireccion1.setToolTipText("");
@@ -438,14 +438,15 @@ public class Interfaz_3_1 extends JFrame {
 		txtNumExpediente.setText((String) table.getValueAt(fila, 0));
 		txtDireccion1.setText((String) table.getValueAt(fila, 2));
 	}
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtNumExpediente.getText(); //CIF
-		datos[3]=txtApellidos.getText(); //Nombre
-		datos[2]=txtNombre.getText();//Tel
-		datos[5]=txtDNI.getText(); //Localidad
-		datos[4]=txtEdad.getText(); //resp_e
-		datos[1]=txtDireccion1.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtNumExpediente.getText(); // CIF
+		datos[3] = txtApellidos.getText(); // Nombre
+		datos[2] = txtNombre.getText();// Tel
+		datos[5] = txtDNI.getText(); // Localidad
+		datos[4] = txtEdad.getText(); // resp_e
+		datos[1] = txtDireccion1.getText();
 		return datos;
 	}
 

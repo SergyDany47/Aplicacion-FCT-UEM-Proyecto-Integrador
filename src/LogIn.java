@@ -131,7 +131,7 @@ public class LogIn extends JFrame {
 		panel_1.add(btnAjustes);
 		btnAjustes.setContentAreaFilled(false);
 		btnAjustes.setIcon(new ImageIcon(LogIn.class.getResource("/Imagenes/icons8-engranaje-48.png")));
-		
+
 		JButton btnCrearCuenta = new JButton("Crear cuenta");
 		btnCrearCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -138,7 +138,8 @@ public class Formulario extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				miControlador.modificarDatos();
-				JOptionPane.showMessageDialog(null, "Modificado con éxito", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Modificado con éxito", "Advertencia",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnModificar.setBounds(204, 186, 98, 21);

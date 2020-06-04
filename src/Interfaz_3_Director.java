@@ -42,7 +42,7 @@ public class Interfaz_3_Director extends JFrame {
 	private JButton btnListTutores;
 	private JButton btnGuardarFichero;
 	private JTextField txtDireccion;
-	
+
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	}
@@ -67,7 +67,7 @@ public class Interfaz_3_Director extends JFrame {
 		panel.setBounds(0, 87, 1275, 594);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		panel_1 = new JPanel();
 		panel_1.setBounds(0, 0, 1265, 4);
 		panel.add(panel_1);
@@ -115,7 +115,7 @@ public class Interfaz_3_Director extends JFrame {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter3D";
-				miControlador.filtrarLisEmpr(getDatos(),inter);
+				miControlador.filtrarLisEmpr(getDatos(), inter);
 			}
 		});
 
@@ -129,7 +129,7 @@ public class Interfaz_3_Director extends JFrame {
 		});
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnGuardarFichero.setBackground(SystemColor.info);
-		
+
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNombre.setBounds(414, 40, 85, 20);
@@ -159,7 +159,7 @@ public class Interfaz_3_Director extends JFrame {
 		txtDNI.setForeground(Color.BLACK);
 		txtDNI.setColumns(10);
 		txtDNI.setBackground(Color.WHITE);
-		
+
 		txtDireccion = new JTextField();
 		txtDireccion.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDireccion.setToolTipText("");
@@ -202,7 +202,7 @@ public class Interfaz_3_Director extends JFrame {
 		btnListAlumnos.setBounds(1072, 11, 180, 30);
 		contentPane.add(btnListAlumnos);
 		btnListAlumnos.setFont(new Font("Arial", Font.PLAIN, 14));
-		
+
 		btnAtras = new JButton("Cerrar Sesión");
 		btnAtras.setBackground(SystemColor.info);
 		btnAtras.addActionListener(new ActionListener() {
@@ -213,7 +213,7 @@ public class Interfaz_3_Director extends JFrame {
 		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnAtras.setBounds(10, 11, 117, 30);
 		contentPane.add(btnAtras);
-		
+
 		btnListTutores = new JButton("Listado Tutores");
 		btnListTutores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -225,14 +225,15 @@ public class Interfaz_3_Director extends JFrame {
 		btnListTutores.setBounds(692, 11, 180, 30);
 		contentPane.add(btnListTutores);
 	}
-	public String [] getDatos(){
-		String [] datos = new String[6];
-		datos[0]=txtNumExpediente.getText(); //CIF
-		datos[3]=txtApellidos.getText(); //Nombre
-		datos[2]=txtNombre.getText();//Tel
-		datos[5]=txtDNI.getText(); //Localidad
-		datos[4]=txtEdad.getText(); //resp_e
-		datos[1]=txtDireccion.getText();
+
+	public String[] getDatos() {
+		String[] datos = new String[6];
+		datos[0] = txtNumExpediente.getText(); // CIF
+		datos[3] = txtApellidos.getText(); // Nombre
+		datos[2] = txtNombre.getText();// Tel
+		datos[5] = txtDNI.getText(); // Localidad
+		datos[4] = txtEdad.getText(); // resp_e
+		datos[1] = txtDireccion.getText();
 		return datos;
 	}
 
