@@ -33,6 +33,7 @@ public class Modelo {
 	private Interfaz_4_1 miInterfaz4_1;
 	private Interfaz_5_Director miInterfaz5_Director;
 	private Interfaz_5_1_Director miInterfaz5_1_Director;
+	private datosHistoricos historicos;
 	private Formulario miFormulario;
 	private int fallos = 0;
 	private String resultado;
@@ -42,37 +43,41 @@ public class Modelo {
 	// Aqui estan todas las SQl que hemos tenido que ir añadiendo
 	private String listadoAlumno = "SELECT num_exp \"EXPEDIENTE\",nombre,apellidos,dni,"
 			+ "trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"EDAD\""
-			+ ",nacionalidad FROM sebas.alumno";
+			+ ",nacionalidad FROM ivan.alumno";
 
-	private String sqlListadoTutor = "SELECT dni_tutor \"DNI\", nombre, apellidos, centro_cod_centro \"CÓDIGO CENTRO\"  FROM sebas.tutor";
+	private String sqlListadoTutor = "SELECT dni_tutor \"DNI\", nombre, apellidos, centro_cod_centro \"CÓDIGO CENTRO\"  FROM ivan.tutor";
 	private String listadoEmpresa = "SELECT cif, nombre, direccion \"DIRECCIÓN\", telefono \"TELÉFONO\", resp_e \"RESPONSABLE\", localidad "
-			+ "FROM sebas.empresa";
+			+ "FROM ivan.empresa";
 	private String listadoPracticas = "SELECT alumno_num_exp \"EXPEDIENTE\", dni_alumno \"DNI\", nombre_al \"NOMBRE ALUMNO\", "
 			+ "apellido_al \"APELLIDOS ALUMNO\", empresa_cif \"CIF EMPRESA\", nombre_emp \"NOMBRE EMPRESA\","
-			+ " responsable_emp \"RESPONSABLE EMPRESA\" \r\n" + "FROM sebas.practica";
+			+ " responsable_emp \"RESPONSABLE EMPRESA\" \r\n" + "FROM ivan.practica";
 	private String alumnosTutor = "SELECT p.Anio_academico \"Año\", t.nombre \"Tutor\", g.nombre_ciclo \"Ciclo\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", e.nombre \"Empresa\", pr.anexo_2_1, pr.anexo_3, pr.anexo_7, pr.anexo_8 \r\n"
-			+ "FROM sebas.pertenece p, sebas.tutor t, sebas.grupo g, sebas.alumno a, sebas.empresa e, sebas.practica pr,sebas.gestiona ge \r\n"
+			+ "FROM ivan.pertenece p, ivan.tutor t, ivan.grupo g, ivan.alumno a, ivan.empresa e, ivan.practica pr,ivan.gestiona ge \r\n"
 			+ "WHERE p.grupo_cod_grupo=g.cod_grupo AND p.alumno_num_exp=a.num_exp AND e.cif = pr.empresa_cif AND pr.alumno_num_exp=a.num_exp AND t.dni_tutor=ge.tutor_dni_tutor AND \r\n"
 			+ "g.cod_grupo=ge.grupo_cod_grupo";
 	private String alumnoEmpresa = "SELECT p.Anio_academico \"Año\", c.numConv \"Nº Conv\", e.nombre \"Empresa\", a.dni \"DNI\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nom_grupo \"Grupo\", t.nombre \"Tutor C.\", p.tutorE \"Tutor E.\" \r\n"
-			+ "FROM sebas.practica p, sebas.colabora c, sebas.empresa e, sebas.alumno a, sebas.grupo g, sebas.tutor t, sebas.pertenece pe, sebas.centro ce, sebas.gestiona ge \r\n"
+			+ "FROM ivan.practica p, ivan.colabora c, ivan.empresa e, ivan.alumno a, ivan.grupo g, ivan.tutor t, ivan.pertenece pe, ivan.centro ce, ivan.gestiona ge \r\n"
 			+ "WHERE t.centro_cod_centro=ce.cod_centro AND ce.cod_centro=c.centro_cod_centro AND c.empresa_cif=e.cif AND e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp \r\n"
 			+ "AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor\r\n"
 			+ "ORDER BY e.nombre";
 	private String alumnosPractica = "SELECT p.Anio_academico \"Año\", t.nombre \"Tutor C.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", e.nombre \"Empresa\", c.numConv \"Nº Conv\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"Fechas\", p.horario \"Horario\", p.tutorE \"Tutor E.\"\r\n"
-			+ "FROM sebas.practica p, sebas.colabora c, sebas.empresa e, sebas.alumno a, sebas.grupo g, sebas.tutor t, sebas.pertenece pe, sebas.gestiona ge \r\n"
+			+ "FROM ivan.practica p, ivan.colabora c, ivan.empresa e, ivan.alumno a, ivan.grupo g, ivan.tutor t, ivan.pertenece pe, ivan.gestiona ge \r\n"
 			+ "WHERE c.empresa_cif=e.cif AND e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp \r\n"
 			+ "AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor\r\n"
 			+ "ORDER BY p.tutorE";
 	private String TutorCiclo = "SELECT ge.Anio_academico \"Año\", g.nombre_ciclo \"Ciclo\", t.dni_tutor \"DNI\", t.nombre \"Nombre\", t.apellidos \"Apellidos\", c.cod_centro \"Centro\", g.cod_grupo \"Grupo\" \r\n"
-			+ "FROM sebas.gestiona ge, sebas.grupo g, sebas.tutor t, sebas.centro c\r\n"
+			+ "FROM ivan.gestiona ge, ivan.grupo g, ivan.tutor t, ivan.centro c\r\n"
 			+ "WHERE g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor AND t.centro_cod_centro=c.cod_centro";
 	private String InformeFct = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", g.nom_grupo \"Grupo\", e.nombre \"Empresa\", e.localidad \"Provincia\", e.resp_e \"Resp E.\", p.tutorE \"Tutor E.\", e.telefono \"TLF.\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"F. Ini-Fin\", t.nombre \"Tutor C.\", p.email_t \"Email\" \r\n"
-			+ "FROM sebas.practica p, sebas.empresa e, sebas.alumno a, sebas.grupo g, sebas.tutor t, sebas.pertenece pe, sebas.gestiona ge \r\n"
+			+ "FROM ivan.practica p, ivan.empresa e, ivan.alumno a, ivan.grupo g, ivan.tutor t, ivan.pertenece pe, ivan.gestiona ge \r\n"
 			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor";
 	private String Aseguradoras = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", a.dni \"DNI\", e.localidad \"Localidad\", e.nombre \"Empresa\", a.nacionalidad \"Nacional.\", trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"Edad\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"Periodo\"  \r\n"
-			+ "FROM sebas.practica p, sebas.empresa e, sebas.alumno a, sebas.grupo g, sebas.pertenece pe\r\n"
+			+ "FROM ivan.practica p, ivan.empresa e, ivan.alumno a, ivan.grupo g, ivan.pertenece pe\r\n"
 			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp  AND pe.grupo_cod_grupo=g.cod_grupo";
+	private String historico="SELECT alumno_num_exp Anio_academico \"Año\", \"EXPEDIENTE\", dni_alumno \"DNI\", nombre_al \"NOMBRE ALUMNO\", "
+			+ "apellido_al \"APELLIDOS ALUMNO\", empresa_cif \"CIF EMPRESA\", nombre_emp \"NOMBRE EMPRESA\","
+			+ " responsable_emp \"RESPONSABLE EMPRESA\" \r\n" + "FROM ivan.practica";
+
 
 	private String user = "";
 	private String pas = "";
@@ -164,7 +169,7 @@ public class Modelo {
 	 */
 	public void InicioSesion(String usr, String pwd) {
 
-		String ssql = "SELECT * FROM sebas.users WHERE usr=? AND pwd=?";
+		String ssql = "SELECT * FROM ivan.users WHERE usr=? AND pwd=?";
 		if (conexion == null) {
 			ConexionBBDD();
 		}
@@ -198,7 +203,7 @@ public class Modelo {
 	 */
 	public void consultaStatement(String usr) {
 
-		String ssql = "SELECT rol FROM sebas.users WHERE usr='" + usr + "'";
+		String ssql = "SELECT rol FROM ivan.users WHERE usr='" + usr + "'";
 
 		try {
 			Statement stmt = conexion.createStatement();
@@ -281,6 +286,9 @@ public class Modelo {
 	public void setMiInterfaz5_1_Director(Interfaz_5_1_Director miInterfaz5_1_Director) {
 		this.miInterfaz5_1_Director = miInterfaz5_1_Director;
 	}
+	public void setMisDatos(datosHistoricos misDatos) {
+		this.historicos = misDatos;
+	}
 
 	public void setMiFormulario(Formulario miFormulario) {
 		this.miFormulario = miFormulario;
@@ -354,6 +362,9 @@ public class Modelo {
 	 */
 	public String getInformeFct() {
 		return InformeFct;
+	}
+	public String getHistor() {
+		return historico;
 	}
 
 	public String getAseguradoras() {
@@ -431,7 +442,7 @@ public class Modelo {
 	 * @param email
 	 */
 	public void insertarUsuario(String usuario, String password, String rol, String email) {
-		String query = "INSERT INTO sebas.users(usr, rol, pwd, email) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO ivan.users(usr, rol, pwd, email) VALUES(?, ?, ?, ?)";
 		try {
 			if (conexion == null) {
 				ConexionBBDD();
@@ -459,7 +470,7 @@ public class Modelo {
 	 */
 	public void insertarAlumnos(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad) {
-		String sql = "INSERT INTO sebas.alumno (dni,nombre,apellidos,num_exp,fec_naci,nacionalidad) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ivan.alumno (dni,nombre,apellidos,num_exp,fec_naci,nacionalidad) VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -484,7 +495,7 @@ public class Modelo {
 	 * @param num_exp
 	 */
 	public void borrarAlumnos(String num_exp) {
-		String sql = "DELETE FROM sebas.alumno WHERE num_exp = ?";
+		String sql = "DELETE FROM ivan.alumno WHERE num_exp = ?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, num_exp);
@@ -511,7 +522,7 @@ public class Modelo {
 	 */
 	public void modificarAlumno(String nombre, String apellido, String fecha, String num_exp, String dni,
 			String nacionalidad, String dniant) {
-		String sql = "UPDATE sebas.alumno SET num_exp=?,dni=?,nombre=?,apellidos=?,fec_naci=?,nacionalidad=? WHERE dni=? ";
+		String sql = "UPDATE ivan.alumno SET num_exp=?,dni=?,nombre=?,apellidos=?,fec_naci=?,nacionalidad=? WHERE dni=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, num_exp);
@@ -543,7 +554,7 @@ public class Modelo {
 	 */
 	public void insertarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion) {
-		String sql = "INSERT INTO sebas.empresa (cif,nombre,direccion,telefono,resp_e,localidad) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ivan.empresa (cif,nombre,direccion,telefono,resp_e,localidad) VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -568,7 +579,7 @@ public class Modelo {
 	 * @param cif
 	 */
 	public void borrarEmpresa(String cif) {
-		String sql = "DELETE FROM sebas.empresa WHERE cif=?";
+		String sql = "DELETE FROM ivan.empresa WHERE cif=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -595,7 +606,7 @@ public class Modelo {
 	 */
 	public void modificarEmpresa(String nombre, String tlf, String cif, String localidad, String responsable,
 			String direccion, String cifOld) {
-		String sql = "UPDATE sebas.empresa SET cif=?,nombre=?,direccion=?,telefono=?,resp_e=?,localidad=? WHERE cif=? ";
+		String sql = "UPDATE ivan.empresa SET cif=?,nombre=?,direccion=?,telefono=?,resp_e=?,localidad=? WHERE cif=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -623,7 +634,7 @@ public class Modelo {
 	 * @param dni
 	 */
 	public void insertarTutor(String nombre, String apellido, String cod, String dni) {
-		String sql = "INSERT INTO sebas.tutor (dni_tutor,nombre,apellidos,centro_cod_centro) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO ivan.tutor (dni_tutor,nombre,apellidos,centro_cod_centro) VALUES(?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -650,7 +661,7 @@ public class Modelo {
 	 * @param dniOld
 	 */
 	public void modificarTutor(String nombre, String apellido, String cod, String dni, String dniOld) {
-		String sql = "UPDATE sebas.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
+		String sql = "UPDATE ivan.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -674,7 +685,7 @@ public class Modelo {
 	 * @param dni
 	 */
 	public void borrarTutor(String dni) {
-		String sql = "DELETE FROM sebas.tutor WHERE dni_tutor=?";
+		String sql = "DELETE FROM ivan.tutor WHERE dni_tutor=?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, dni);
@@ -695,7 +706,7 @@ public class Modelo {
 	 */
 	public String[] updateAlumno(String dni) {
 		String[] datos = new String[2];
-		String updateAlumno = "Select dni, fec_naci from sebas.alumno where dni='" + dni + "'";
+		String updateAlumno = "Select dni, fec_naci from ivan.alumno where dni='" + dni + "'";
 		try {
 			Statement stmt = conexion.createStatement();
 			ResultSet rs = stmt.executeQuery(updateAlumno);
@@ -732,7 +743,7 @@ public class Modelo {
 	 */
 	public void datosPracticas(String exp, String dni, String nombreAl, String apellido, String cif, String nombreEm,
 			String responsable) {
-		String sql = "INSERT INTO sebas.practica (empresa_cif, alumno_num_exp, dni_alumno, nombre_al, apellido_al, nombre_emp, responsable_emp) "
+		String sql = "INSERT INTO ivan.practica (empresa_cif, alumno_num_exp, dni_alumno, nombre_al, apellido_al, nombre_emp, responsable_emp) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
@@ -762,7 +773,7 @@ public class Modelo {
 	 * @param cif
 	 */
 	public void borrarPracticas(String exp, String cif) {
-		String sql = "DELETE FROM sebas.practica WHERE empresa_cif = ? and alumno_num_exp = ?";
+		String sql = "DELETE FROM ivan.practica WHERE empresa_cif = ? and alumno_num_exp = ?";
 		try {
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setString(1, cif);
@@ -881,6 +892,23 @@ public class Modelo {
 			}
 			if (inter.equals("inter51D"))
 				miInterfaz5_1_Director.generaFiltro(getTabla(sqlListadoTutor + " where" + where));
+		}
+
+	}
+	
+	public void filtrarHis(String where) {
+		if (where == "")
+			JOptionPane.showMessageDialog(null, "Debe introducir el año para filtrar", "Adevertencia",
+					JOptionPane.WARNING_MESSAGE);
+		else {
+			// Quitamos el ultimo AND sobrante
+			int cant = where.length();
+			where = where.subSequence(0, cant - 4).toString();
+			// Creamos la consulta y pasamos la condición where y devolvemos el filtrado a
+			// la interfaz que sea
+			
+				historicos.generaFiltro(getTabla(historico + " where" + where));
+			
 		}
 
 	}

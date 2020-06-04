@@ -71,7 +71,28 @@ public class datosHistoricos extends JFrame {
 		scrollPane.setViewportView(table);
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent e) {
-				String ssql = miModelo.getInformeFct();
+				String ssql = miModelo.getHistor();
+				table.setModel(miModelo.getTabla(ssql));
+			}
+		});
+		
+		JTextField txtAnio = new JTextField();
+		txtAnio.setText("A\u00F1o Academico");
+		txtAnio.setBounds(93, 38, 100, 20);
+		panel.add(txtAnio);
+		txtAnio.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Filtrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				miControlador.filtrarHis(txtAnio.getText());
+			}
+		});
+		btnNewButton.setBounds(1084, 37, 89, 23);
+		panel.add(btnNewButton);
+		addWindowListener(new WindowAdapter() {
+			public void windowActivated(WindowEvent e) {
+				String ssql = miModelo.getHistor();
 				table.setModel(miModelo.getTabla(ssql));
 			}
 		});
@@ -97,6 +118,8 @@ public class datosHistoricos extends JFrame {
 		lblTitulo.setForeground(new Color(153, 0, 51));
 		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 	}
-
+	public void generaFiltro(DefaultTableModel tabla) {
+		table.setModel(tabla);
+	}
 }
 

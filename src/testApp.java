@@ -25,6 +25,7 @@ public class testApp {
 		Interfaz_5_Director miInterfaz5_Director = new Interfaz_5_Director();
 		Interfaz_5_1_Director miInterfaz5_1_Director = new Interfaz_5_1_Director();
 		Formulario miFormulario = new Formulario();
+		datosHistoricos misDatos = new datosHistoricos();
 		Nuevo_Usuario miNuevo_Usuario = new Nuevo_Usuario();
 		InformesGenerales miGenerales = new InformesGenerales();
 		InformeAseguradoras miAseguradora = new InformeAseguradoras();
@@ -35,6 +36,7 @@ public class testApp {
 		 * conocer.
 		 */
 		miControlador.setMiModelo(miModelo);
+		miControlador.setMisDatos(misDatos);
 		miControlador.setMiInterfaz2(miInterfaz2);
 		miControlador.setMiInterfaz2_Director(miInterfaz2_Director);
 		miControlador.setMiInterfaz2_1(miInterfaz2_1);
@@ -58,6 +60,7 @@ public class testApp {
 		/**
 		 * Aqui le marcamos al modelo todas las clases e interfaces que debe conocer.
 		 */
+		miModelo.setMisDatos(misDatos);
 		miModelo.setMiInterfaz2(miInterfaz2);
 		miModelo.setMiInterfaz2_Director(miInterfaz2_Director);
 		miModelo.setMiInterfaz2_1(miInterfaz2_1);

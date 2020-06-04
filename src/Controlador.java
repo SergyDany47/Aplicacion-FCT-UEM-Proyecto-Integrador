@@ -16,6 +16,7 @@ public class Controlador {
 	private Interfaz_5_1_Director miInterfaz5_1_Director;
 	private Formulario miFormulario;
 	private InformesGenerales miGenerales;
+	private datosHistoricos historicos;
 	private InformesFCT miFCT;
 	private InformeAseguradoras miAseguradora;
 	private Modelo miModelo;
@@ -59,6 +60,9 @@ public class Controlador {
 
 	public void setMiInterfaz2_2(Interfaz_2_2 miInterfaz2_2) {
 		this.miInterfaz2_2 = miInterfaz2_2;
+	}
+	public void setMisDatos(datosHistoricos misDatos) {
+		this.historicos = misDatos;
 	}
 
 	public void setMiInterfaz3(Interfaz_3 miInterfaz3) {
@@ -226,6 +230,11 @@ public class Controlador {
 	public void modifEmpresa() {
 		miInterfaz3_1.setVisible(true);
 		miInterfaz3.setVisible(false);
+	}
+	
+	public void datosHis() {
+		historicos.setVisible(true);
+		miInterfaz4_Director.setVisible(false);
 	}
 
 	public void modifAlumnos() {
@@ -476,6 +485,7 @@ public class Controlador {
 
 		miModelo.filtrarLisPra(where, inter);
 	}
+	
 
 	/**
 	 * 
@@ -495,5 +505,14 @@ public class Controlador {
 
 		miModelo.filtrarLisTut(where, inter);
 	}
+	
+	public void filtrarHis(String datos) {
+		String where = "";
+		if (!datos.equals("") && !datos.equals("A\\u00F1o Academico"))
+			where += " lower(p.Anio_academico) LIKE lower('" + datos + "') || '%' AND";
+
+		miModelo.filtrarHis(where);
+	}
+
 
 }

@@ -182,6 +182,11 @@ public class Interfaz_4_Director extends JFrame {
 		panel.add(txtExp);
 		
 		JButton btnDatosHistoricos = new JButton("Datos Historicos");
+		btnDatosHistoricos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				miControlador.datosHis();
+			}
+		});
 		btnDatosHistoricos.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnDatosHistoricos.setBackground(SystemColor.info);
 		btnDatosHistoricos.setBounds(1045, 539, 128, 30);
