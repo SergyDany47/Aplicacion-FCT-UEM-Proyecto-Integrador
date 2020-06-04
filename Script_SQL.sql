@@ -256,7 +256,7 @@ INSERT INTO users(usr, rol, pwd, email) VALUES('Master','director', '1234', 'dir
 "Select dni, fec_naci from sebas.alumno where dni='"+dni+"'";
 "SELECT p.Anio_academico \"Año\", t.nombre \"Tutor\", g.nombre_ciclo \"Ciclo\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", e.nombre \"Empresa\", pr.anexo_2_1, pr.anexo_3, pr.anexo_7, pr.anexo_8"
 
-private String listadoPracticas ="FROM ELFREDERIC.pertenece p, ELFREDERIC.tutor t, ELFREDERIC.grupo g, ELFREDERIC.alumno a, ELFREDERIC.empresa e, ELFREDERIC.practica pr,ELFREDERIC.gestiona ge"
+private String alumnosTutor ="FROM ELFREDERIC.pertenece p, ELFREDERIC.tutor t, ELFREDERIC.grupo g, ELFREDERIC.alumno a, ELFREDERIC.empresa e, ELFREDERIC.practica pr,ELFREDERIC.gestiona ge"
 			+ "WHERE p.grupo_cod_grupo=g.cod_grupo AND p.alumno_num_exp=a.num_exp AND e.cif = pr.empresa_cif AND pr.alumno_num_exp=a.num_exp AND t.dni_tutor=ge.tutor_dni_tutor AND"
 			+ "g.cod_grupo=ge.grupo_cod_grupo";
             
