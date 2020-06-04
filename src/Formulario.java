@@ -87,20 +87,20 @@ public class Formulario extends JFrame {
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setBackground(Color.WHITE);
 		lblUsuario.setBounds(74, 57, 75, 27);
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblUsuario.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblUsuario.setForeground(Color.WHITE);
 		panel.add(lblUsuario);
 
 		lblContrasena = new JLabel("Contraseña:");
 		lblContrasena.setForeground(Color.WHITE);
-		lblContrasena.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblContrasena.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblContrasena.setBackground(Color.WHITE);
-		lblContrasena.setBounds(74, 94, 98, 27);
+		lblContrasena.setBounds(74, 94, 120, 27);
 		panel.add(lblContrasena);
 
 		lblURL = new JLabel("URL:");
 		lblURL.setForeground(Color.WHITE);
-		lblURL.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblURL.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblURL.setBackground(Color.WHITE);
 		lblURL.setBounds(74, 131, 75, 27);
 		panel.add(lblURL);
@@ -124,6 +124,7 @@ public class Formulario extends JFrame {
 		textURL.setText(user[2]);
 
 		btnReiniciar = new JButton("Volver");
+		btnReiniciar.setFont(new Font("Arial Black", Font.PLAIN, 11));
 		btnReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				miControlador.cerrarSesion();
@@ -133,6 +134,7 @@ public class Formulario extends JFrame {
 		panel.add(btnReiniciar);
 
 		btnModificar = new JButton("Modificar");
+		btnModificar.setFont(new Font("Arial Black", Font.PLAIN, 11));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				miControlador.modificarDatos();

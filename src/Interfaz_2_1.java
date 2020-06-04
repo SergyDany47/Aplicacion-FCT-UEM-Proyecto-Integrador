@@ -210,16 +210,18 @@ public class Interfaz_2_1 extends JFrame {
 		});
 
 		txtEdad = new JTextField();
-		txtEdad.setBounds(433, 59, 85, 20);
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtEdad.setBounds(403, 59, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
-		txtEdad.setText("Fecha.Nacimiento");
+		txtEdad.setText("Edad");
 		txtEdad.setForeground(Color.BLACK);
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
 
 		txtNumExpediente = new JTextField();
-		txtNumExpediente.setBounds(23, 59, 115, 20);
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNumExpediente.setBounds(23, 59, 85, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
 		txtNumExpediente.setForeground(Color.BLACK);
@@ -231,7 +233,7 @@ public class Interfaz_2_1 extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(747, 53, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter21T";
@@ -240,7 +242,8 @@ public class Interfaz_2_1 extends JFrame {
 		});
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(243, 59, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(118, 59, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
 		txtNombre.setText("Nombre");
@@ -249,7 +252,8 @@ public class Interfaz_2_1 extends JFrame {
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(148, 59, 85, 20);
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtApellidos.setBounds(213, 59, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
 		txtApellidos.setText("Apellidos");
@@ -258,7 +262,8 @@ public class Interfaz_2_1 extends JFrame {
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
-		txtDNI.setBounds(338, 59, 85, 20);
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtDNI.setBounds(308, 59, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
 		txtDNI.setText("DNI");
@@ -267,7 +272,8 @@ public class Interfaz_2_1 extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 
 		txtNacionalidad = new JTextField();
-		txtNacionalidad.setBounds(534, 59, 100, 20);
+		txtNacionalidad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNacionalidad.setBounds(498, 59, 100, 20);
 		panel.add(txtNacionalidad);
 		txtNacionalidad.setToolTipText("");
 		txtNacionalidad.setText("Nacionalidad");
@@ -288,6 +294,7 @@ public class Interfaz_2_1 extends JFrame {
 		panel_1_1.add(lblEdicionAlumnos);
 
 		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Arial", Font.PLAIN, 10));
 		textField_1.setBounds(38, 126, 182, 20);
 		panel_1_1.add(textField_1);
 		textField_1.setToolTipText("");
@@ -297,6 +304,7 @@ public class Interfaz_2_1 extends JFrame {
 		textField_1.setBackground(Color.WHITE);
 
 		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Arial", Font.PLAIN, 10));
 		textField_3.setBounds(38, 156, 182, 20);
 		panel_1_1.add(textField_3);
 		textField_3.setToolTipText("");
@@ -306,6 +314,7 @@ public class Interfaz_2_1 extends JFrame {
 		textField_3.setBackground(Color.WHITE);
 
 		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Arial", Font.PLAIN, 10));
 		textField_2.setBounds(38, 187, 182, 20);
 		panel_1_1.add(textField_2);
 		textField_2.setToolTipText("");
@@ -315,6 +324,7 @@ public class Interfaz_2_1 extends JFrame {
 		textField_2.setBackground(Color.WHITE);
 
 		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Arial", Font.PLAIN, 10));
 		textField_4.setBounds(38, 218, 182, 20);
 		panel_1_1.add(textField_4);
 		textField_4.setToolTipText("");
@@ -324,6 +334,7 @@ public class Interfaz_2_1 extends JFrame {
 		textField_4.setBackground(Color.WHITE);
 
 		txtFechaNacimiento = new JTextField();
+		txtFechaNacimiento.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtFechaNacimiento.setBounds(38, 249, 182, 20);
 		panel_1_1.add(txtFechaNacimiento);
 		txtFechaNacimiento.setToolTipText("");
@@ -333,6 +344,7 @@ public class Interfaz_2_1 extends JFrame {
 		txtFechaNacimiento.setBackground(Color.WHITE);
 
 		textField_5 = new JTextField();
+		textField_5.setFont(new Font("Arial", Font.PLAIN, 10));
 		textField_5.setBounds(38, 280, 182, 20);
 		panel_1_1.add(textField_5);
 		textField_5.setToolTipText("");
@@ -374,11 +386,11 @@ public class Interfaz_2_1 extends JFrame {
 		});
 
 		panel_1_1.add(btnGuardar);
-		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGuardar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnGuardar.setBackground(SystemColor.inactiveCaption);
 
 		btnModificar = new JButton("Modificar");
-		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnModificar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnModificar.setBackground(SystemColor.inactiveCaption);
 		btnModificar.setBounds(140, 352, 100, 30);
 		
@@ -419,7 +431,7 @@ public class Interfaz_2_1 extends JFrame {
 		panel_1_1.add(btnModificar);
 
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBorrar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnBorrar.setBackground(SystemColor.inactiveCaption);
 		btnBorrar.setBounds(30, 352, 100, 30);
 		panel_1_1.add(btnBorrar);
@@ -467,7 +479,7 @@ public class Interfaz_2_1 extends JFrame {
 				miControlador.adminAlumnos();
 			}
 		});
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 
 		lblTitulo = new JLabel("Añadir / Modificar Alumnos");
 		lblTitulo.setBounds(423, 11, 493, 39);

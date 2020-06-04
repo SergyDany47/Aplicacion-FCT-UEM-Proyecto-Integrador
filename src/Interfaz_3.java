@@ -89,7 +89,8 @@ public class Interfaz_3 extends JFrame {
 		});
 		
 		txtEdad = new JTextField();
-		txtEdad.setBounds(542, 40, 85, 20);
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtEdad.setBounds(528, 40, 85, 20);
 		panel.add(txtEdad);
 		txtEdad.setToolTipText("");
 		txtEdad.setText("Responsable");
@@ -97,7 +98,7 @@ public class Interfaz_3 extends JFrame {
 		txtEdad.setColumns(10);
 		txtEdad.setBackground(Color.WHITE);
 
-		btnAnadirModificar = new JButton("A\u00F1adir / Modificar Empresa");
+		btnAnadirModificar = new JButton("Añadir / Modificar Empresa");
 		btnAnadirModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				miControlador.modifEmpresa();
@@ -106,9 +107,10 @@ public class Interfaz_3 extends JFrame {
 		btnAnadirModificar.setBounds(958, 538, 220, 30);
 		panel.add(btnAnadirModificar);
 		btnAnadirModificar.setBackground(SystemColor.info);
-		btnAnadirModificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAnadirModificar.setFont(new Font("Arial", Font.PLAIN, 14));
 
 		txtNumExpediente = new JTextField();
+		txtNumExpediente.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtNumExpediente.setBounds(93, 40, 87, 20);
 		panel.add(txtNumExpediente);
 		txtNumExpediente.setBackground(Color.WHITE);
@@ -121,7 +123,7 @@ public class Interfaz_3 extends JFrame {
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
 		btnFiltrar.setBounds(1073, 40, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String inter = "inter3T";
@@ -130,7 +132,8 @@ public class Interfaz_3 extends JFrame {
 		});
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(315, 40, 85, 20);
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtNombre.setBounds(638, 40, 85, 20);
 		panel.add(txtNombre);
 		txtNombre.setToolTipText("");
 		txtNombre.setText("Tel\u00E9fono");
@@ -139,6 +142,7 @@ public class Interfaz_3 extends JFrame {
 		txtNombre.setBackground(Color.WHITE);
 
 		txtApellidos = new JTextField();
+		txtApellidos.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtApellidos.setBounds(202, 40, 85, 20);
 		panel.add(txtApellidos);
 		txtApellidos.setToolTipText("");
@@ -148,7 +152,8 @@ public class Interfaz_3 extends JFrame {
 		txtApellidos.setBackground(Color.WHITE);
 
 		txtDNI = new JTextField();
-		txtDNI.setBounds(427, 40, 85, 20);
+		txtDNI.setFont(new Font("Arial", Font.PLAIN, 10));
+		txtDNI.setBounds(420, 40, 85, 20);
 		panel.add(txtDNI);
 		txtDNI.setToolTipText("");
 		txtDNI.setText("Localidad");
@@ -157,7 +162,7 @@ public class Interfaz_3 extends JFrame {
 		txtDNI.setBackground(Color.WHITE);
 		
 		btnGuardarFichero = new JButton("Guardar Fichero");
-		btnGuardarFichero.setBounds(93, 544, 137, 23);
+		btnGuardarFichero.setBounds(93, 539, 137, 30);
 		panel.add(btnGuardarFichero);
 		btnGuardarFichero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -168,12 +173,13 @@ public class Interfaz_3 extends JFrame {
 		btnGuardarFichero.setFont(new Font("Arial", Font.PLAIN, 12));
 		
 		txtDireccion = new JTextField();
+		txtDireccion.setFont(new Font("Arial", Font.PLAIN, 10));
 		txtDireccion.setToolTipText("");
 		txtDireccion.setText("Direccion");
 		txtDireccion.setForeground(Color.BLACK);
 		txtDireccion.setColumns(10);
 		txtDireccion.setBackground(Color.WHITE);
-		txtDireccion.setBounds(660, 40, 85, 20);
+		txtDireccion.setBounds(313, 40, 85, 20);
 		panel.add(txtDireccion);
 
 		lblFondo = new JLabel("");
@@ -216,7 +222,7 @@ public class Interfaz_3 extends JFrame {
 			}
 		});
 		btnCerrarSesion.setBackground(SystemColor.info);
-		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCerrarSesion.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnCerrarSesion.setBounds(10, 11, 117, 30);
 		contentPane.add(btnCerrarSesion);
 	}

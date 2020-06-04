@@ -118,7 +118,7 @@ public class Interfaz_4_1 extends JFrame {
 		panel.setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 40, 526, 185);
+		scrollPane.setBounds(29, 40, 530, 185);
 		panel.add(scrollPane);
 
 		table = new JTable();
@@ -136,7 +136,7 @@ public class Interfaz_4_1 extends JFrame {
 		scrollPane.setViewportView(table);
 
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(766, 545, 100, 30);
+		btnBorrar.setBounds(898, 544, 100, 30);
 		panel.add(btnBorrar);
 		btnBorrar.setBackground(SystemColor.inactiveCaption);
 		/**
@@ -166,13 +166,13 @@ public class Interfaz_4_1 extends JFrame {
 				}
 			}
 		});
-		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBorrar.setFont(new Font("Arial", Font.PLAIN, 14));
 
 		btnFiltrar = new JButton("Unir");
 		btnFiltrar.setBackground(SystemColor.inactiveCaption);
-		btnFiltrar.setBounds(546, 126, 100, 30);
+		btnFiltrar.setBounds(583, 107, 100, 30);
 		panel.add(btnFiltrar);
-		btnFiltrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFiltrar.setFont(new Font("Arial", Font.PLAIN, 14));
 		/**
 		 * Alert Filtrar
 		 * 
@@ -200,7 +200,7 @@ public class Interfaz_4_1 extends JFrame {
 		});
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(656, 40, 588, 185);
+		scrollPane_1.setBounds(710, 40, 530, 185);
 		panel.add(scrollPane_1);
 
 		table_2 = new JTable();
@@ -214,7 +214,7 @@ public class Interfaz_4_1 extends JFrame {
 		});
 
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(340, 349, 526, 185);
+		scrollPane_2.setBounds(289, 349, 709, 185);
 		panel.add(scrollPane_2);
 
 		table_1 = new JTable();
@@ -228,9 +228,9 @@ public class Interfaz_4_1 extends JFrame {
 		});
 
 		lblNewLabel = new JLabel("Vista de Asignaci\u00F3n");
-		lblNewLabel.setBounds(444, 293, 326, 45);
+		lblNewLabel.setBounds(478, 291, 326, 45);
 		panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 37));
 		lblNewLabel.setForeground(new Color(153, 0, 51));
 
 		lblFondo = new JLabel("");
@@ -247,13 +247,13 @@ public class Interfaz_4_1 extends JFrame {
 				miControlador.adminPracticas();
 			}
 		});
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setFont(new Font("Arial", Font.PLAIN, 13));
 
 		lblTitulo = new JLabel("Asignar Pr\u00E1cticas");
 		lblTitulo.setBounds(449, 11, 491, 50);
 		contentPane.add(lblTitulo);
 		lblTitulo.setForeground(new Color(153, 0, 51));
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 37));
 	}
 
 	/**
