@@ -254,6 +254,36 @@ INSERT INTO users(usr, rol, pwd, email) VALUES('Master','director', '1234', 'dir
 "UPDATE sebas.tutor SET dni_tutor=?,nombre=?,apellidos=?,centro_cod_centro=? WHERE dni_tutor=? ";
 "DELETE FROM sebas.tutor WHERE dni_tutor=?";
 "Select dni, fec_naci from sebas.alumno where dni='"+dni+"'";
+"SELECT p.Anio_academico \"Año\", t.nombre \"Tutor\", g.nombre_ciclo \"Ciclo\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", e.nombre \"Empresa\", pr.anexo_2_1, pr.anexo_3, pr.anexo_7, pr.anexo_8"
+
+private String listadoPracticas ="FROM ELFREDERIC.pertenece p, ELFREDERIC.tutor t, ELFREDERIC.grupo g, ELFREDERIC.alumno a, ELFREDERIC.empresa e, ELFREDERIC.practica pr,ELFREDERIC.gestiona ge"
+			+ "WHERE p.grupo_cod_grupo=g.cod_grupo AND p.alumno_num_exp=a.num_exp AND e.cif = pr.empresa_cif AND pr.alumno_num_exp=a.num_exp AND t.dni_tutor=ge.tutor_dni_tutor AND"
+			+ "g.cod_grupo=ge.grupo_cod_grupo";
+            
+private String alumnoEmpresa = "SELECT p.Anio_academico \"Año\", c.numConv \"Nº Conv\", e.nombre \"Empresa\", a.dni \"DNI\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nom_grupo \"Grupo\", t.nombre \"Tutor C.\", p.tutorE \"Tutor E.\" \r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.colabora c, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.pertenece pe, ELFREDERIC.centro ce, ELFREDERIC.gestiona ge \r\n"
+			+ "WHERE t.centro_cod_centro=ce.cod_centro AND ce.cod_centro=c.centro_cod_centro AND c.empresa_cif=e.cif AND e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp \r\n"
+			+ "AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor\r\n"
+			+ "ORDER BY e.nombre";
+            
+private String alumnosPractica = "SELECT p.Anio_academico \"Año\", t.nombre \"Tutor C.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", e.nombre \"Empresa\", c.numConv \"Nº Conv\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"Fechas\", p.horario \"Horario\", p.tutorE \"Tutor E.\"\r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.colabora c, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.pertenece pe, ELFREDERIC.gestiona ge \r\n"
+			+ "WHERE c.empresa_cif=e.cif AND e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp \r\n"
+			+ "AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor\r\n"
+			+ "ORDER BY p.tutorE";
+            
+private String TutorCiclo = "SELECT ge.Anio_academico \"Año\", g.nombre_ciclo \"Ciclo\", t.dni_tutor \"DNI\", t.nombre \"Nombre\", t.apellidos \"Apellidos\", c.cod_centro \"Centro\", g.cod_grupo \"Grupo\" \r\n"
+			+ "FROM ELFREDERIC.gestiona ge, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.centro c\r\n"
+			+ "WHERE g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor AND t.centro_cod_centro=c.cod_centro";
+            
+private String InformeFct = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", g.nom_grupo \"Grupo\", e.nombre \"Empresa\", e.localidad \"Provincia\", e.resp_e \"Resp E.\", p.tutorE \"Tutor E.\", e.telefono \"TLF.\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"F. Ini-Fin\", t.nombre \"Tutor C.\", p.email_t \"Email\" \r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.tutor t, ELFREDERIC.pertenece pe, ELFREDERIC.gestiona ge \r\n"
+			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp AND pe.grupo_cod_grupo=g.cod_grupo AND g.cod_grupo=ge.grupo_cod_grupo AND ge.tutor_dni_tutor=t.dni_tutor";
+            
+private String Aseguradoras = "SELECT p.Anio_academico \"Año\", a.num_exp \"Exp.\", CONCAT(CONCAT(a.nombre,' '),a.apellidos) \"Alumno\", g.nombre_ciclo \"Ciclo\", a.dni \"DNI\", e.localidad \"Localidad\", e.nombre \"Empresa\", a.nacionalidad \"Nacional.\", trunc((to_date((to_char(sysdate,'yyyy')||'-'||to_char(sysdate,'mm')||'-'||to_char(sysdate,'dd')),'yyyy-mm-dd')-fec_naci)/365) \"Edad\", CONCAT(CONCAT(p.fecha_ini,' - '),p.fecha_fin) \"Periodo\"  \r\n"
+			+ "FROM ELFREDERIC.practica p, ELFREDERIC.empresa e, ELFREDERIC.alumno a, ELFREDERIC.grupo g, ELFREDERIC.pertenece pe\r\n"
+			+ "WHERE e.cif=p.empresa_cif AND p.alumno_num_exp=a.num_exp AND a.num_exp=pe.alumno_num_exp  AND pe.grupo_cod_grupo=g.cod_grupo";
+
 
 
 */
