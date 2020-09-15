@@ -618,6 +618,7 @@ public class Modelo {
 			stmt.setString(7, cifOld);
 			stmt.executeUpdate();
 			System.out.println("Guardado con exito");
+			System.out.println(sql);
 			insertado = true;
 		} catch (SQLException e) {
 			insertado = false;
